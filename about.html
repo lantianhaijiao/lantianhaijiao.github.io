@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no, viewport-fit=cover"
+    />
+    <title></title>
+    <style media="screen">
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        font-family: "Microsoft YaHei", "微软雅黑", Verdana, Arial, Helvetica;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        -webkit-overflow-scrolling: touch;
+      }
+      #app {
+        min-height: 100vh;
+        width: 100%;
+        background: linear-gradient(180deg, #666 30.02%, transparent 100%);
+        padding: 50px 0;
+      }
+      .container {
+        display: grid;
+        width: 90%;
+        margin: 0 auto;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 50px;
+        position: relative;
+      }
+      .item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        cursor: pointer;
+        display: block;
+      }
+      .pointer {
+        position: absolute;
+        --t: 3px; /*线粗细*/
+        --l: 30px; /*线长*/
+        --g: 15px; /* 线跟图间距*/
+        --w: 303px; /*图宽*/
+        --h: 202px;
+        --x: 0px;
+        --y: 0px;
+        left: 0;
+        top: 0;
+        width: calc(var(--w) + 2 * var(--g));
+        height: calc(var(--h) + 2 * var(--g));
+        border: var(--t) solid #fff;
+        margin-left: calc(var(--g) * -1);
+        margin-top: calc(var(--g) * -1);
+        box-sizing: border-box;
+        transform: translate(var(--x), var(--y));
+        transition: transform 0.5s;
+        -webkit-mask: conic-gradient(
+            at var(--l) var(--l),
+            transparent 75%,
+            blue 75% 100%
+          )
+          0 0 / calc(100% - var(--l)) calc(100% - var(--l));
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <div class="container">
+        <div class="item">
+          <img src="/img/common/t1.jpg" />
+        </div>
+        <div class="item">
+          <img src="/img/common/t2.jpg" />
+        </div>
+        <div class="item">
+          <img src="/img/common/t3.jpg" />
+        </div>
+        <div class="item">
+          <img src="/img/common/t4.jpeg" />
+        </div>
+        <div class="item">
+          <img src="/img/common/t5.jpg" />
+        </div>
+        <div class="item">
+          <img src="/img/common/t6.jpeg" />
+        </div>
+        <div class="item">
+          <img src="/img/common/t7.jpg" />
+        </div>
+        <div class="item">
+          <img src="/img/common/t8.jpg" />
+        </div>
+        <div class="item">
+          <img src="/img/common/t9.jpg" />
+        </div>
+        <div class="pointer"></div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      const imgs = document.querySelectorAll('.item img');
+      const pointer = document.querySelector('.pointer');
+      for (const img of imgs) {
+        img.onmouseenter = e => {
+          const w = img.offsetWidth;
+          const h = img.offsetHeight;
+          const x = img.offsetLeft;
+          const y = img.offsetTop;
+          // console.log(x, y, w, h);
+          pointer.style.setProperty('--w', w + 'px');
+          pointer.style.setProperty('--h', h + 'px');
+          pointer.style.setProperty('--x', x + 'px');
+          pointer.style.setProperty('--y', y + 'px');
+        }
+      }
+    </script>
+  </body>
+</html>
