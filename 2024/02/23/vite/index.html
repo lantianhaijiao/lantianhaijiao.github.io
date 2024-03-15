@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#3367D6"/>
+  <link rel="apple-touch-icon" href="/icons-192.png">
+  <link rel="manifest" href="/manifest.json">
+  
+  <meta name="generator" content="Hexo 7.1.1">
+
+  
+
+  
+    <meta name="keywords" content="Blog">
+  
+
+  
+    <meta name="author" content="lantianhaijiao">
+  
+
+  
+
+  
+
+  <title>vue-cli升级vite | 蓝天海礁</title>
+
+  
+
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+
+  <!--mathjax latex数学公式显示支持-->
+  
+  
+
+  
+
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+  <div class="root-container">
+    
+<!-- header container -->
+<header class="header-container post">
+  
+    <div class="post-image" style="background-image: url(/img/common/t3.jpg)"></div>
+  
+
+  <!-- navbar -->
+<nav class="navbar">
+  <div class="navbar-content">
+    <!-- logo -->
+    <div class="navbar-logo">
+      <a href="/">
+        
+          蓝天海礁
+        
+      </a>
+    </div>
+    <!-- link -->
+    <div class="navbar-link">
+      <div class="navbar-btn">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <ul class="navbar-list">
+        
+          <li class="navbar-list-item"><a href="/">首页</a></li>
+        
+          <li class="navbar-list-item"><a target="_blank" rel="noopener" href="https://segmentfault.com/u/lantianhaijiao">思否</a></li>
+        
+          <li class="navbar-list-item"><a href="/about">关于</a></li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+    <div class="header-content">
+      <div class="post-text layout-block">
+        <div class="layout-margin">
+          <h1 class="title-wrap">vue-cli升级vite</h1>
+          <h2 class="title-sub-wrap">
+            <strong>lantianhaijiao</strong>
+            <span>发布于</span>
+            <time  class="article-date" datetime="2024-02-23T02:02:01.000Z" itemprop="datePublished">2024-02-23</time>
+          </h2>
+          
+            <h2 class="last-time">
+              <span>最后更新于</span>
+              <time  class="article-updated" datetime="2024-03-14T12:18:27.246Z" itemprop="dateUpdated">2024-03-14</time>
+            </h2>
+          
+          
+          <ul class="wrap-list dark">
+  
+    <li><a href="/categories/%E8%84%9A%E6%89%8B%E6%9E%B6/">📒 脚手架</a></li>
+  
+</ul>
+          <ul class="wrap-list dark">
+  
+</ul>
+        </div>
+      </div>
+    </div>
+  
+
+  
+  
+  
+</header>
+
+    <!-- 文章 -->
+
+<!-- 文章内容 -->
+<div class="body-container">
+  <article class="content-container layout-block post-container">
+    <div class="article-info">
+      
+      
+      
+      
+      <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
+        <h1 id="vue升级2-7-关联vite升级"><a href="#vue升级2-7-关联vite升级" class="headerlink" title="vue升级2.7,关联vite升级"></a>vue升级2.7,关联vite升级</h1><blockquote>
+<p><a target="_blank" rel="noopener" href="https://v2.cn.vuejs.org/v2/guide/migration-vue-2-7.html">https://v2.cn.vuejs.org/v2/guide/migration-vue-2-7.html</a></p>
+</blockquote>
+<p><a href="mailto:&#x76;&#117;&#101;&#45;&#116;&#x65;&#109;&#112;&#108;&#97;&#x74;&#101;&#45;&#99;&#111;&#109;&#112;&#x69;&#x6c;&#101;&#x72;&#x40;&#50;&#46;&#x36;&#46;&#49;&#x30;">&#x76;&#117;&#101;&#45;&#116;&#x65;&#109;&#112;&#108;&#97;&#x74;&#101;&#45;&#99;&#111;&#109;&#112;&#x69;&#x6c;&#101;&#x72;&#x40;&#50;&#46;&#x36;&#46;&#49;&#x30;</a> 需要升级到2.7.16<br>vite-plugin-vue2 替换为 @vitejs&#x2F;plugin-vue2<br>vite.createFilter is not a function</p>
+<p>需要升级vite到3.x版本，这个错误是vite与插件不兼容,查看@vitejs&#x2F;plugin-vue2源码发现，引入了vite3.0<br>Error in render: “ReferenceError: React is not defined”<br>需要安装@vitejs&#x2F;plugin-vue-jsx<br>使用vue this, vuex等<br>import { getCurrentInstance } from ‘vue’</p>
+<p>&#x2F;&#x2F; 访问vuex<br>export const useStore &#x3D; () &#x3D;&gt; {<br>  const vm &#x3D; getCurrentInstance()<br>  if (!vm) throw new Error(‘must be called in setup’)<br>  console.log(‘vm–’, vm);<br>  return vm.proxy.$store<br>}<br>&#x2F;&#x2F; 访问this<br>export const useCtx &#x3D; () &#x3D;&gt; {<br>  const vm &#x3D; getCurrentInstance()<br>  if (!vm) throw new Error(‘must be called in setup’)<br>  return vm.proxy;<br>}</p>
+<hr>
+<h2 id="增加vite开发环境"><a href="#增加vite开发环境" class="headerlink" title="增加vite开发环境"></a>增加vite开发环境</h2><p>README.md</p>
+<h2 id="新增vite-dev环境"><a href="#新增vite-dev环境" class="headerlink" title="新增vite dev环境"></a>新增vite dev环境</h2><h4 id="渐进升级-不影响原使用-目前保留vue-cli-service和vite共存"><a href="#渐进升级-不影响原使用-目前保留vue-cli-service和vite共存" class="headerlink" title="渐进升级,不影响原使用,目前保留vue-cli-service和vite共存"></a>渐进升级,不影响原使用,目前保留vue-cli-service和vite共存</h4><h4 id="node-v14-8以上-我使用了v16"><a href="#node-v14-8以上-我使用了v16" class="headerlink" title="node v14.8以上(我使用了v16)"></a>node v14.8以上(我使用了v16)</h4><p>切换版本后需要删除node_module报包重新执行 npm install</p>
+<h3 id="本地"><a href="#本地" class="headerlink" title="本地"></a>本地</h3><p>npm run dev-vite</p>
+<h4 id="其他说明"><a href="#其他说明" class="headerlink" title="其他说明"></a>其他说明</h4><p>css尽量别使用 module 这个名称,会报这么个错误,待排查</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[vite] Internal server error: Unexpected token (1:0)</span><br><span class="line">  Plugin: vite-plugin-commonjs</span><br></pre></td></tr></table></figure>
+<p>babel.config.js</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var npmEvent = process.env.npm_lifecycle_event;</span><br><span class="line">console.log(&#x27;babel p&#x27;, npmEvent);</span><br><span class="line">module.exports = &#123;</span><br><span class="line">  presets: [</span><br><span class="line">    // https://github.com/vuejs/vue-cli/tree/master/packages/@vue/babel-preset-app</span><br><span class="line">    npmEvent === &#x27;dev-vite&#x27; ? &#x27;@babel/preset-env&#x27; : &#x27;@vue/cli-plugin-babel/preset&#x27;,</span><br><span class="line">    // &#x27;@babel/preset-env&#x27;, // vite版需要安装这个</span><br><span class="line">  ],</span><br><span class="line">  &#x27;env&#x27;: &#123;</span><br><span class="line">    &#x27;development&#x27;: &#123;</span><br><span class="line">      // babel-plugin-dynamic-import-node plugin only does one thing by converting all import() to require().</span><br><span class="line">      // This plugin can significantly increase the speed of hot updates, when you have a large number of pages.</span><br><span class="line">      &#x27;plugins&#x27;: [&#x27;dynamic-import-node&#x27;]</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>package.json 增加脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;dev-vite&quot;: &quot;vite&quot;,</span><br><span class="line">&quot;build-vite&quot;: &quot;vite build&quot;,</span><br><span class="line">&quot;preview-vite&quot;: &quot;vite preview&quot;</span><br></pre></td></tr></table></figure>
+
+<p>main.js</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if (process.env.VITE) &#123;</span><br><span class="line">  import(&#x27;virtual:svg-icons-register&#x27;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> &#x2F;&#x2F; vite显示svg需要引入这个,但是在vue-cli里面引入报错,待TODO<br>index.html<br>修改main.js为 type&#x3D;”module”</p>
+<p>vite.config.js</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line">import &#123; defineConfig &#125; from &quot;vite&quot;;</span><br><span class="line">import commonjs from &quot;vite-plugin-commonjs&quot;;</span><br><span class="line">import ViteRequireContext from &quot;@originjs/vite-plugin-require-context&quot;;</span><br><span class="line">// import viteComponents, &#123; VuetifyResolver &#125; from &quot;vite-plugin-components&quot;;</span><br><span class="line">import envCompatible from &quot;vite-plugin-env-compatible&quot;;</span><br><span class="line">// import OptimizationPersist from &quot;vite-plugin-optimize-persist&quot;;</span><br><span class="line">// import PkgConfig from &quot;vite-plugin-package-config&quot;;</span><br><span class="line">import &#123; createSvgIconsPlugin &#125; from &quot;vite-plugin-svg-icons&quot;;</span><br><span class="line">// import &#123; createVuePlugin &#125; from &quot;vite-plugin-vue2&quot;;</span><br><span class="line">import vue from &#x27;@vitejs/plugin-vue2&#x27;;</span><br><span class="line">import vueJsx from &#x27;@vitejs/plugin-vue2-jsx&#x27;</span><br><span class="line">// import &#123; viteExternalsPlugin &#125; from &#x27;vite-plugin-externals&#x27;</span><br><span class="line"></span><br><span class="line">import path from &quot;path&quot;;</span><br><span class="line">import requireTransform from &#x27;vite-plugin-require-transform&#x27;;</span><br><span class="line">import legacy from &#x27;@vitejs/plugin-legacy&#x27;</span><br><span class="line"></span><br><span class="line">// const &#123; createVuePlugin &#125; = require(&#x27;vite-plugin-vue2&#x27;)</span><br><span class="line">// const path = require(&#x27;path&#x27;)</span><br><span class="line">const REPLACEMENT = `$&#123;path.resolve(__dirname, &quot;./src&quot;)&#125;/`;</span><br><span class="line">const REPLACEMENT2 = `$&#123;path.resolve(__dirname, &quot;./static&quot;)&#125;/`;</span><br><span class="line">export default defineConfig(&#123;</span><br><span class="line">  server: &#123;</span><br><span class="line">    host: &quot;0.0.0.0&quot;,</span><br><span class="line">    https: false,</span><br><span class="line">    port: 8080,</span><br><span class="line">    proxy: &#123;</span><br><span class="line">    &#125;,</span><br><span class="line">    // open: true</span><br><span class="line">  &#125;,</span><br><span class="line">  resolve: &#123;</span><br><span class="line">    alias: [</span><br><span class="line">      &#123;</span><br><span class="line">        find: &quot;@/&quot;,</span><br><span class="line">        replacement: REPLACEMENT,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        find: &quot;src/&quot;,</span><br><span class="line">        replacement: REPLACEMENT,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        find: /^~@\//,</span><br><span class="line">        replacement: REPLACEMENT,</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        find: &#x27;~static/&#x27;,</span><br><span class="line">        replacement: REPLACEMENT2</span><br><span class="line">      &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        find: /^~/,</span><br><span class="line">        replacement: &#x27;&#x27;,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">    extensions: [</span><br><span class="line">      &quot;.vue&quot;,</span><br><span class="line">      &quot;.js&quot;,</span><br><span class="line">      &quot;.jsx&quot;,</span><br><span class="line">      &quot;.mjs&quot;,</span><br><span class="line">      &quot;.ts&quot;,</span><br><span class="line">      &quot;.tsx&quot;,</span><br><span class="line">      &quot;.json&quot;,</span><br><span class="line">      &quot;.css&quot;,</span><br><span class="line">      &quot;.scss&quot;,</span><br><span class="line">    ],</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [</span><br><span class="line">    legacy(&#123;</span><br><span class="line">      targets: [&#x27;defaults&#x27;, &#x27;ie &gt;= 11&#x27;, &#x27;chrome 52&#x27;],</span><br><span class="line">      additionalLegacyPolyfills: [&#x27;regenerator-runtime/runtime&#x27;],</span><br><span class="line">    &#125;),</span><br><span class="line">    // viteExternalsPlugin(&#123;</span><br><span class="line">    //   vue: &#x27;Vue&#x27;,</span><br><span class="line">    //   &#x27;vuex&#x27;: &#x27;Vuex&#x27;,</span><br><span class="line">    //   &#x27;vue-router&#x27;: &#x27;VueRouter&#x27;,</span><br><span class="line">    //   &#x27;element-ui&#x27;:&#x27;ELEMENT&#x27;</span><br><span class="line">    // &#125;),</span><br><span class="line">    // createVuePlugin(&#123; jsx: true &#125;),</span><br><span class="line">    vue(),</span><br><span class="line">    vueJsx(&#123;</span><br><span class="line">      // options are passed on to @vue/babel-preset-jsx</span><br><span class="line">    &#125;),</span><br><span class="line">    // viteComponents(&#123;</span><br><span class="line">    //   customComponentResolvers: [VuetifyResolver()],</span><br><span class="line">    // &#125;),</span><br><span class="line">    requireTransform(&#123;</span><br><span class="line">      fileRegex: /.js$|.vue$/</span><br><span class="line">    &#125;),</span><br><span class="line">    createSvgIconsPlugin(&#123;</span><br><span class="line">      iconDirs: [path.resolve(__dirname, &quot;./src/icons/svg&quot;)],</span><br><span class="line">      symbolId: &quot;icon-[dir]-[name]&quot;,</span><br><span class="line">    &#125;),</span><br><span class="line">    commonjs(/* options */),</span><br><span class="line">    ViteRequireContext(/* options */),</span><br><span class="line">    envCompatible(),</span><br><span class="line">    // PkgConfig(),</span><br><span class="line">    // OptimizationPersist()</span><br><span class="line">  ],</span><br><span class="line">  build: &#123;</span><br><span class="line">    target: &quot;es2015&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+      </section>
+
+      
+      
+        <nav class="article-nav">
+          
+            <div class="article-nav-item layout-padding">
+  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
+    
+      <div class="card-cover" background-image-lazy data-img="/img/common/t4.jpeg"></div>
+    
+    <div class="card-text">
+      
+        <a href="/2024/03/14/pitfall-diary/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">踩坑记</h2>
+        </a>
+      
+      <div class="card-text--row">Newer</div>
+    </div>
+  </article>
+</div>
+          
+          
+            <div class="article-nav-item layout-padding">
+  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
+    
+      <div class="card-cover" background-image-lazy data-img="/img/common/t2.jpg"></div>
+    
+    <div class="card-text">
+      
+        <a href="/2024/02/07/hello-world/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">Hello Hexo</h2>
+        </a>
+      
+      <div class="card-text--row">Older</div>
+    </div>
+  </article>
+</div>
+          
+        </nav>
+      
+
+      <section class="page-message-container layout-padding">
+        
+
+
+  
+  
+
+  
+  
+
+
+      </section>
+    </div>
+    <div class="widget-info">
+      <!--
+ * @Author: haobin.wang
+ * @Date: 2024-02-08 10:22:44
+ * @LastEditors: haobin.wang
+ * @LastEditTime: 2024-03-15 11:13:26
+ * @Description: Do not edit
+-->
+<section class="widget-author widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-body">
+    
+      <img src="/img/avatar.png" class="soft-size--round soft-style--box personal-avatar" alt="蓝天海礁">
+    
+    
+      <h2>蓝天海礁</h2>
+    
+    
+      <p>wonderful</p>
+    
+
+    <div class="count-box">
+      <div class="count-box--item">
+        <svg class="icon icon-article" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M240.51564747 647.74217627h196.07203239c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806V165.10332731c0-33.18142087-30.16492806-60.32985613-60.32985612-60.32985611H245.04038668C225.43318342 104.7734712 210.35071939 119.85593522 210.35071939 139.46313845V617.57724821c0 16.59071043 13.57421762 30.16492806 30.16492808 30.16492806z m663.62841731-452.47392089v482.63884894c0 33.18142087-27.14843525 60.32985613-60.32985612 60.32985613H180.18579134c-33.18142087 0-60.32985613-27.14843525-60.32985612-60.32985613V195.26825538c-49.77213131 0-90.49478418 40.72265287-90.49478417 90.49478417v452.4739209c0 49.77213131 40.72265287 90.49478418 90.49478417 90.49478417h286.56681657c16.59071043 0 30.16492806 13.57421762 30.16492807 30.16492807s13.57421762 30.16492806 30.16492805 30.16492806h90.49478418c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806s13.57421762-30.16492806 30.16492807-30.16492807h286.56681657c49.77213131 0 90.49478418-40.72265287 90.49478417-90.49478417V285.76303955c0-49.77213131-40.72265287-90.49478418-90.49478417-90.49478417zM587.41232014 647.74217627h191.54729318c19.60720323 0 34.68966726-15.08246403 34.68966729-34.68966727V134.93839925c0-16.59071043-13.57421762-30.16492806-30.16492808-30.16492805H617.57724821c-30.16492806 0-60.32985613 27.14843525-60.32985612 60.32985611v452.4739209c0 16.59071043 13.57421762 30.16492806 30.16492805 30.16492806z" fill="currentColor"></path>
+</svg>
+        <span>4</span>
+      </div>
+      <div class="count-box--item">
+        <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
+</svg>
+        2
+      </div>
+      <div class="count-box--item">
+        <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
+</svg>
+        0
+      </div>
+    </div>
+  </div>
+</section>
+<script src="../plug-in/util.js"></script>
+<script>
+  console.log('dbclick', dbClick);
+  document.querySelector('.personal-avatar').addEventListener('click', () => {
+    alert(12)
+  });
+</script>
+
+      
+
+      
+<section class="widet-notice widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-notice" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M512 945.02305225v28.15620663a24.27259221 24.27259221 0 0 1-24.27259221 24.27259335H394.0352a48.54518557 48.54518557 0 0 1-41.74885888-23.78714112l-110.68302222-184.47170332a132.04290333 132.04290333 0 0 1-17.47626667-48.54518557h118.4502511a200.97706667 200.97706667 0 0 1 76.21594113 14.56355556l20.38897777 133.49925888a48.54518557 48.54518557 0 0 0 36.40888888 27.67075555l16.01991111 2.91271112a24.27259221 24.27259221 0 0 1 20.38897778 25.72894889zM997.45185223 463.45481443a194.18074112 194.18074112 0 0 1-38.8361489 116.50844445 24.75804445 24.75804445 0 0 1-36.4088889 0l-34.95253333-34.95253333a24.27259221 24.27259221 0 0 1-2.91271111-30.58346667 97.09036999 97.09036999 0 0 0 0-106.79940665 24.27259221 24.27259221 0 0 1 2.91271111-30.58346666l34.95253333-34.95253334a24.75804445 24.75804445 0 0 1 18.93262223-7.28177777 26.2144 26.2144 0 0 1 17.47626667 9.70903665A194.18074112 194.18074112 0 0 1 997.45185223 463.45481443z m-194.18074112-388.36148111v776.72296335a48.54518557 48.54518557 0 0 1-48.54518556 48.54518443h-28.64165888a48.54518557 48.54518557 0 0 1-33.98163001-14.07810332l-145.63555556-143.20829668A291.27111111 291.27111111 0 0 0 342.57730333 657.63555556H172.18370333a145.63555556 145.63555556 0 0 1-145.63555556-145.63555556v-97.09036999a145.63555556 145.63555556 0 0 1 145.63555556-145.63555556h170.3936a291.27111111 291.27111111 0 0 0 206.31703779-85.43952668l145.63555555-143.20829554a48.54518557 48.54518557 0 0 1 33.98162888-14.07810446H754.72592555a48.54518557 48.54518557 0 0 1 48.54518556 48.54518555z" fill="currentColor"></path>
+</svg>
+    <span>NOTICE</span>
+  </div>
+  <div class="widget-body">
+    <p>做个有趣的人</p>
+  </div>
+</section>
+
+
+      <section class="widget-categorys widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
+</svg>
+    <span>CATEGORYS</span>
+  </div>
+  <div class="widget-body">
+    <ul class="categorys-list">
+      
+        <li class="categorys-list-item">
+          <a href="/categories/js/">
+            js (1)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
+          <a href="/categories/%E8%84%9A%E6%89%8B%E6%9E%B6/">
+            脚手架 (1)
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+</section>
+
+      <section class="widget-tags widget-item  layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
+</svg>
+    <span>TAGS</span>
+  </div>
+  <div class="widget-body">
+    <div class="tags-cloud">
+      
+    </div>
+  </div>
+</section>
+    </div>
+  </article>
+</div>
+
+    <!-- footer container -->
+<footer id="footer" class="footer">
+  <div class="footer-container">
+    
+    <div class="social-icons">
+      
+        
+      
+        
+      
+        
+      
+        
+          <a href="https://github.com/lantianhaijiao" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
+            <svg class="icon icon-github" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M64.6 512c0 195.6 125.4 361.9 300.1 422.9 23.5 5.9 19.9-10.8 19.9-22.2v-77.6c-135.8 15.9-141.3-74-150.5-89-18.5-31.5-61.9-39.5-49-54.5 31-15.9 62.5 4 98.9 58 26.4 39.1 77.9 32.5 104.1 26 5.7-23.5 17.9-44.5 34.7-60.9-140.7-25.2-199.4-111.1-199.4-213.3 0-49.5 16.4-95.1 48.4-131.8-20.4-60.6 1.9-112.4 4.9-120.1 58.2-5.2 118.5 41.6 123.3 45.3 33.1-8.9 70.8-13.7 112.9-13.7 42.4 0 80.3 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.4-43.9 2.9 7.7 24.7 58.3 5.5 118.1 32.5 36.8 49 82.8 49 132.4 0 102.3-59 188.3-200.2 213.2 23.5 23.3 38.1 55.5 38.1 91.1v112.7c0.8 9 0 17.9 15.1 17.9C832.7 877 960.4 709.4 960.4 512.1c0-247.5-200.6-447.9-447.9-447.9C265 64.1 64.6 264.5 64.6 512z"></path>
+</svg>
+          </a>
+        
+      
+    </div>
+     
+    <p>&copy; 2024 <a href="/" target="_blank">lantianhaijiao</a></p>
+
+    
+
+    <p>Powered by <a href="https://hexo.io" target="_blank" rel="noopener noreferrer">Hexo</a> Theme - <a href="https://github.com/miiiku/flex-block" target="_blank" rel="noopener noreferrer author">flex-block</a></p>
+
+    <p>
+      <a href="javascript:;" id="theme-light">🌞 浅色</a>
+      <a href="javascript:;" id="theme-dark">🌛 深色</a>
+      <a href="javascript:;" id="theme-auto">🤖️ 自动</a>
+    </p>
+  </div>
+</footer>
+  </div>
+
+  <div class="back-to-top-fixed soft-size--round soft-style--box">
+    <svg class="icon icon-back-to-top" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <path d="M725.333333 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8l-213.333333-213.333333c-17.066667-17.066667-17.066667-42.666667 0-59.733333s42.666667-17.066667 59.733333 0l213.333333 213.333333c17.066667 17.066667 17.066667 42.666667 0 59.733333C746.666667 422.4 738.133333 426.666667 725.333333 426.666667z"></path>
+      <path d="M298.666667 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8-17.066667-17.066667-17.066667-42.666667 0-59.733333l213.333333-213.333333c17.066667-17.066667 42.666667-17.066667 59.733333 0s17.066667 42.666667 0 59.733333l-213.333333 213.333333C320 422.4 311.466667 426.666667 298.666667 426.666667z"></path>
+      <path d="M512 896c-25.6 0-42.666667-17.066667-42.666667-42.666667L469.333333 170.666667c0-25.6 17.066667-42.666667 42.666667-42.666667s42.666667 17.066667 42.666667 42.666667l0 682.666667C554.666667 878.933333 537.6 896 512 896z"></path>
+    </svg>
+  </div>
+
+  
+  <!-- aplayer -->
+
+
+<!-- dplayer -->
+
+
+<!-- copy button  -->
+<script src="/js/clipboard.min.js" defer></script>
+
+<!-- https://clipboardjs.com/ -->
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  
+  <!-- 尾部用户自定义相关内容 -->
+</body>
+</html>

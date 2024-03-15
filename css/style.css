@@ -575,6 +575,7 @@ html.show-mobile-nav .navbar-list {
 }
 .header-container {
   position: relative;
+  overflow: hidden;
 }
 .header-content {
   position: relative;
@@ -597,6 +598,8 @@ html.show-mobile-nav .navbar-list {
   background-position: center;
   background-repeat: no-repeat;
   z-index: auto;
+  transform: scale(1.1);
+  transition: transform 0.8s ease-out;
 }
 .post-image:before {
   position: absolute;
@@ -1141,6 +1144,16 @@ html.show-mobile-nav .navbar-list {
   min-width: 25%;
   max-width: 100%;
 }
+.content-container.article-list .article-item .card-cover {
+  transition: transform 0.8s ease-in;
+}
+.content-container.article-list .article-item .card-text h2 {
+  text-shadow: 0 0 10px rgba(0,0,0,0.7);
+  cursor: pointer;
+}
+.content-container.article-list .article-item:hover .card-cover {
+  transform: scale(1.2);
+}
 .content-container.article-list .card-container.article-card {
   padding: var(--content-large-padding);
 }
@@ -1235,6 +1248,7 @@ html.show-mobile-nav .navbar-list {
   width: 60px;
   height: 60px;
   display: block;
+  cursor: pointer;
 }
 .content-container.post-container .widget-info .widget-author .widget-body h2 {
   font-weight: bolder;
