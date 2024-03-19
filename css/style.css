@@ -577,6 +577,9 @@ html.show-mobile-nav .navbar-list {
   position: relative;
   overflow: hidden;
 }
+.header-container:hover .post-image {
+  transform: scale(1.2);
+}
 .header-content {
   position: relative;
   width: 100%;
@@ -598,8 +601,7 @@ html.show-mobile-nav .navbar-list {
   background-position: center;
   background-repeat: no-repeat;
   z-index: auto;
-  transform: scale(1.1);
-  transition: transform 0.8s ease-out;
+  transition: transform 2s ease-out;
 }
 .post-image:before {
   position: absolute;
@@ -727,6 +729,8 @@ html.show-mobile-nav .navbar-list {
 .card-container .card-text .card-text--title {
   font-size: var(--font-stress-size);
   font-weight: bolder;
+  text-shadow: 0 0 5px rgba(0,0,0,0.7);
+  cursor: pointer;
 }
 .card-container .card-text .card-text--row {
   font-size: var(--font-common-size);
@@ -1145,11 +1149,7 @@ html.show-mobile-nav .navbar-list {
   max-width: 100%;
 }
 .content-container.article-list .article-item .card-cover {
-  transition: transform 0.8s ease-in;
-}
-.content-container.article-list .article-item .card-text h2 {
-  text-shadow: 0 0 10px rgba(0,0,0,0.7);
-  cursor: pointer;
+  transition: transform 0.5s ease-in;
 }
 .content-container.article-list .article-item:hover .card-cover {
   transform: scale(1.2);
@@ -1248,7 +1248,6 @@ html.show-mobile-nav .navbar-list {
   width: 60px;
   height: 60px;
   display: block;
-  cursor: pointer;
 }
 .content-container.post-container .widget-info .widget-author .widget-body h2 {
   font-weight: bolder;
