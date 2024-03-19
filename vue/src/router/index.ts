@@ -2,12 +2,12 @@
  * @Author: haobin.wang
  * @Date: 2024-02-05 18:15:03
  * @LastEditors: haobin.wang
- * @LastEditTime: 2024-02-06 11:04:19
+ * @LastEditTime: 2024-02-06 18:33:15
  * @Description: Do not edit
  */
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-console.log('import.meta.env.BASE_URL', import.meta.env.BASE_URL);
+// console.log('import.meta.env.BASE_URL', import.meta.env.BASE_URL);
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

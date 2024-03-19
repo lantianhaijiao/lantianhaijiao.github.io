@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#3367D6"/>
+  <link rel="apple-touch-icon" href="/icons-192.png">
+  <link rel="manifest" href="/manifest.json">
+  
+  <meta name="generator" content="Hexo 7.1.1">
+
+  
+
+  
+    <meta name="keywords" content="Blog">
+  
+
+  
+    <meta name="author" content="lantianhaijiao">
+  
+
+  
+
+  
+
+  <title>知识整理1 | 蓝天海礁</title>
+
+  
+
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+
+  <!--mathjax latex数学公式显示支持-->
+  
+  
+
+  
+
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+  <div class="root-container">
+    
+<!-- header container -->
+<header class="header-container post">
+  
+    <div class="post-image" style="background-image: url(/img/common/t1.jpg)"></div>
+  
+
+  <!-- navbar -->
+<nav class="navbar">
+  <div class="navbar-content">
+    <!-- logo -->
+    <div class="navbar-logo">
+      <a href="/">
+        
+          蓝天海礁
+        
+      </a>
+    </div>
+    <!-- link -->
+    <div class="navbar-link">
+      <div class="navbar-btn">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <ul class="navbar-list">
+        
+          <li class="navbar-list-item"><a href="/">首页</a></li>
+        
+          <li class="navbar-list-item"><a target="_blank" rel="noopener" href="https://segmentfault.com/u/lantianhaijiao">思否</a></li>
+        
+          <li class="navbar-list-item"><a href="/about">关于</a></li>
+        
+          <li class="navbar-list-item"><a href="/docs">文档</a></li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+    <div class="header-content">
+      <div class="post-text layout-block">
+        <div class="layout-margin">
+          <h1 class="title-wrap">知识整理1</h1>
+          <h2 class="title-sub-wrap">
+            <strong>lantianhaijiao</strong>
+            <span>发布于</span>
+            <time  class="article-date" datetime="2018-09-29T02:02:01.000Z" itemprop="datePublished">2018-09-29</time>
+          </h2>
+          
+            <h2 class="last-time">
+              <span>最后更新于</span>
+              <time  class="article-updated" datetime="2024-03-19T03:33:54.122Z" itemprop="dateUpdated">2024-03-19</time>
+            </h2>
+          
+          
+          <ul class="wrap-list dark">
+  
+    <li><a href="/categories/js/">📒 js</a></li>
+  
+</ul>
+          <ul class="wrap-list dark">
+  
+</ul>
+        </div>
+      </div>
+    </div>
+  
+
+  
+  
+  
+</header>
+
+    <!-- 文章 -->
+
+<!-- 文章内容 -->
+<div class="body-container">
+  <article class="content-container layout-block post-container">
+    <div class="article-info">
+      
+      
+      
+      
+      <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
+        <p>本文为知识整理，可能工作中用到这些东西不多，可是总有人想让你会</p>
+<hr>
+<h2 id="前言：小时候很渴望长大，羡慕大人们的财富自由；长大后又很羡慕小时候，怀念小时候的无忧无虑，守候着那份天真。哦，还有，不是长大就能财富自由。。。一：js继承"><a href="#前言：小时候很渴望长大，羡慕大人们的财富自由；长大后又很羡慕小时候，怀念小时候的无忧无虑，守候着那份天真。哦，还有，不是长大就能财富自由。。。一：js继承" class="headerlink" title="  前言：小时候很渴望长大，羡慕大人们的财富自由；长大后又很羡慕小时候，怀念小时候的无忧无虑，守候着那份天真。哦，还有，不是长大就能财富自由。。。一：js继承"></a>  前言：小时候很渴望长大，羡慕大人们的财富自由；长大后又很羡慕小时候，怀念小时候的无忧无虑，守候着那份天真。哦，还有，不是长大就能财富自由。。。<br>一：js继承</h2><hr>
+<p><strong>①：对象冒充实现继承：(可实现多继承)</strong></p>
+<hr>
+<p>——原理：让父类构造函数成为子类的方法，然后调用子类的方法，通过this关键字给所有属性和方法赋值</p>
+<pre><code>function Parent(name)
+&#123;
+    this.name=name;
+    this.sayName=function () &#123;
+        console.log(this.name);
+    &#125;
+&#125;
+function Child (cname) &#123;
+    this.parent=Parent;
+    this.parent(cname);
+    delete this.parent; // 删除无用的parent函数 == f Parent(name)
+&#125;
+var mychild=new Child(&quot;名字&quot;);
+mychild.sayName();
+</code></pre>
+<p><strong>②：原型链继承 (不能实现多继承)</strong></p>
+<p>prototype</p>
+<hr>
+<pre><code>    function Parent (name, age) &#123;
+      this.name = name;
+      this.age = age;
+      this.ParFunc = function () &#123;
+      	console.log(this.height)
+      &#125;
+    &#125;;
+    Parent.prototype.sayName = function () &#123;
+      console.log(this)
+    &#125;;
+    function Child (cname, cage, height) &#123;
+      this.height = height
+    &#125;
+
+Child.prototype = new Parent(); // Child原型指向Parent的一个实例
+Child.prototype.constructor = Child; // 把Child指向自己，不与Parent共享
+var child = new Child(&#39;测试名字&#39;, &#39;测试年龄&#39;, &#39;测试身高&#39;)
+console.log(child) // 发现打印出来的属性都继承了，就是没值
+</code></pre>
+<p>child.ParFunc()：当访问ParFunc属性时，会先在child的实例属性中寻找，找不到就去child的原型对象上去找。一层一层的寻找构成了<strong>原型链</strong><br><img src="/img/image-3.png" alt="Alt text"><br>因为无法向父类构造函数传参;可以 new Parent(‘名字’, ‘年龄’)这时传参<br>注：如果想用原型给Child拓展方法：</p>
+<pre><code>Child.prototype.childHeight = function () &#123;
+      console.log(this.height)
+    &#125;
+</code></pre>
+<p>一定要写到Child.prototype &#x3D; new Parent()的下面，要么就被覆盖掉了。</p>
+<p><strong>③：call、apply继承(不能继承原型链，prototype上的)</strong></p>
+<hr>
+<pre><code>        function Parent (name, age) &#123;
+          this.name = name;
+          this.age = age;
+          this.ParFunc = function () &#123;
+          	console.log(this.name)
+          &#125;
+        &#125;
+        
+        function Child (cname, cage, height) &#123;
+          Parent.call(this,cname,cage); // 继承的参数为当前函数的形参
+          // apply: Parent.call(this,arguments);
+          this.height = height;
+        &#125;
+        var child = new Child(&#39;测试名字&#39;, &#39;测试年龄&#39;, &#39;测试身高&#39;)
+        console.log(child)  //  ParFunc: ƒ () age: &quot;测试年龄&quot;
+name: &quot;测试名字&quot;
+</code></pre>
+<p><strong>④：组合继承：call+原型链继承</strong></p>
+<hr>
+<pre><code>function Parent (name, age) &#123;
+  this.name = name;
+  this.age = age;
+  this.ParFunc = function () &#123;
+      console.log(this.height)
+  &#125;
+&#125;
+Parent.prototype.sayName = function () &#123;
+  console.log(this)
+&#125;
+function Child (cname, cage, height) &#123;
+  Parent.call(this, cname, cage); // 解决传参问题
+  this.height = height;
+&#125;;
+Child.prototype = new Parent()
+Child.prototype.constructor = Child; // 把Child指向自己，否则一直指向Parent
+var child = new Child(&#39;测试名字&#39;, &#39;测试年龄&#39;, &#39;测试身高&#39;)
+</code></pre>
+<p> 比较常用的继承方式，缺点是 两次调用 Parent构造函数</p>
+<p> <strong>⑤：寄生组合继承：</strong></p>
+<p>cal+prototype</p>
+<hr>
+<pre><code>function Parent (name, age) &#123; // 父函数
+  this.name = name;
+  this.age = age;
+  this.ParFunc = function () &#123;
+      console.log(this.height)
+  &#125;
+&#125;
+Parent.prototype.sayName = function () &#123;
+  console.log(this)
+&#125;
+function Child (cname, cage, height) &#123; // 子函数
+  Parent.call(this, cname, cage)
+  this.height = height;
+&#125;;
+var createObj = function () &#123; // 中间函数继承 Parent
+  function Trans() &#123;&#125;;
+  Trans.prototype = Parent.prototype;
+  return new Trans();
+&#125;;
+Child.prototype = createObj()
+Child.prototype.constructor = Child; // 改回指针
+var child = new Child(&#39;名字&#39;, &#39;年龄&#39;, &#39;身高&#39;)
+console.log(child)
+</code></pre>
+<h1 id="二：如何获取自定义属性，特例data-如何获取"><a href="#二：如何获取自定义属性，特例data-如何获取" class="headerlink" title="二：如何获取自定义属性，特例data-*如何获取"></a>二：如何获取自定义属性，特例data-*如何获取</h1><p>官方定义：<br>        data-<em>是 <strong>html5</strong> 新属性<br>        主要用于存储页面的自定义数据<br>        不应该包含大写字母（会默认转为小写）<br>        注释：用户代理会完全忽略前缀为 “data-“ 的自定义属性。<br>脑海里第一印象就是 getAttribute(),setAttribute()俩属性了，一个获取，一个设置<br>而平时又很少用到，但是平时用的框架什么的多数都用 data-</em> 这个自定义属性，那其实获取 data- 这类自定义属性的时候，还有个更方便的方法dataset</p>
+<pre><code>&lt;div data-a=&quot;aa&quot; id=&quot;div1&quot; data-b=&quot;bb&quot;&gt;&lt;/div&gt;
+eg:var div1 = document.getElementById(&#39;div1&#39;)
+console.log(div1.dataset) // DOMStringMap &#123;a: &quot;测试&quot;, b: &quot;222&quot;&#125;a: &quot;测试&quot;b: &quot;222&quot;
+</code></pre>
+<p>用data-*作为自定义属性：可以一句话就获取到所有属性，获取方式也简便   </p>
+<h2 id="三：事件的几个阶段：捕获、目标-event-target，即触发过程-、冒泡"><a href="#三：事件的几个阶段：捕获、目标-event-target，即触发过程-、冒泡" class="headerlink" title="三：事件的几个阶段：捕获、目标(event.target，即触发过程)、冒泡"></a>三：事件的几个阶段：捕获、目标(event.target，即触发过程)、冒泡</h2><p>先盗个图</p>
+<p><img src="/img/image-2.png" alt="Alt text"><br>——冒泡(IE事件流)：从最深的节点向外传播，div -&gt; window,就好比往水里丢一个石子，一层层波浪抵达河边缘</p>
+<p>——捕获(网景)：从最外层向目标传递，window -&gt; div,就好比你去一个大企业集团找人，需要提供公司 &gt; 大部门 &gt; 小部门 &gt; 小组 &gt; 目标</p>
+<p>——目标：即触发过程event.target</p>
+<p>——target、currentTarget的区别：target这个属性指向的是目标过程中的DOM对象，也就是 <em><strong>触发事件监听的对象</strong></em>, currentTarget这个指向的是当前的对象，具体内容跟this一样，当this指向的是目标的时候(事件的目标阶段)，target与currentTarget相同</p>
+<p>——现在几乎所有的主流浏览器都支持冒泡；IE早起版本会跳过html直接跳到document，且不支持捕获。</p>
+<p>——平时多数用到冒泡多一些，事件代理(委托)也是通过事件冒泡的原理，让DOM节点可追溯，也可以利用冒泡的原理做埋点，避免新增DOM节点，改代码上线</p>
+<p>——事件句柄addEventListener(‘事件名’, ‘function’, false)，默认冒泡</p>
+<h2 id="四：判断数据类型，返回数据的具体类型"><a href="#四：判断数据类型，返回数据的具体类型" class="headerlink" title="四：判断数据类型，返回数据的具体类型"></a>四：判断数据类型，返回数据的具体类型</h2><p>emm… 那不就直接 <code>return typeof n</code> 不就完了，哦不对，再识别一下数组，因为数组的typeof也是对象，Array.isArray(n)…<br>&#x2F;^12&#x2F; 这返回啥？ wc,也是object吧，那咋区分，对，正则有test方法，再判断一下<br>    if (n.test) {<br>        return ‘RegExp’<br>    }<br>null好像也返回obj吧，时间 Date嘞，都返回obj也没毛病，万物皆对象啊。</p>
+<ul>
+<li><p>据说instanceof也可以：左侧是否是右侧的实例，也就是说每个类型我们都得判断，于是</p>
+<p> [] instanceof Array &#x2F;&#x2F; true<br> [] instanceof Object &#x2F;&#x2F; true</p>
+</li>
+</ul>
+<p>不光麻烦，返回的也不精确啊</p>
+<ul>
+<li>据说constructor也可以：js引擎会为函数添加prototype,并让其指向’该函数’的引用<br>&#x2F;^12&#x2F;.constructor  &#x2F;&#x2F; f RexExp(){[native code]}<br>new Date().constructor &#x2F;&#x2F; ƒ Date() { [native code] }<br>null.constructor &#x2F;&#x2F; 报错：Cannot read..<br>undefined.constructor &#x2F;&#x2F; 报错：Cannot read..<br>发现确实能校验一些typeof 不能校验的，但是 null和undefined没有’指针’啊,而且写继承的时候，指针是可以被改的，稍不注意就凉凉了…</li>
+<li>把这些都整合到一起基本也都够用了，可是并不优雅<br>有请toString登场….<br>华丽分割线</li>
+</ul>
+<hr>
+<p>toString() 是 Object 的原型方法，调用该方法，默认返回当前对象的 [[Class]] 。这是一个内部属性，其格式为 [object Xxx] ，其中 Xxx 就是对象的类型。完美~~</p>
+<pre><code>Object.prototype.toString.call(null) ; // [object Null]
+Object.prototype.toString.call(new Function()) ; // [object Function]
+Object.prototype.toString.call(new Date()) ; // [object Date]
+</code></pre>
+<p>但是我觉得除了obj比较特殊之外，其他类型,typeof都可以判断，不需要再多调用一次toString方法，所以最终封装 &#x3D;&gt;</p>
+<pre><code>function typeDetection (n) &#123;
+  if (typeof n === &#39;object&#39;) &#123;
+      return Object.prototype.toString.call(n)
+  &#125; else &#123;
+      return typeof n
+  &#125;
+&#125;
+</code></pre>
+<p>直接调用typeDetection(‘’)  &#x2F;&#x2F; string</p>
+<h2 id="五：千分位的实现"><a href="#五：千分位的实现" class="headerlink" title="五：千分位的实现"></a>五：千分位的实现</h2><p><strong>Q:字符：1234567890.12 转换为：1,234,567,890.12</strong></p>
+<p><strong>R:</strong><br>个人用了while循环的方式<br>    function strFilter (str) {<br>      let newStr &#x3D; String(str).split(‘.’) &#x2F;&#x2F; 切分原始字符,兼容传入Number类型<br>      let transStr &#x3D; newStr[0],resStr &#x3D; []<br>      while (transStr&#x2F;1000 &gt; 1) { &#x2F;&#x2F; 判断是否大于1000<br>          let whildStr &#x3D; String((transStr&#x2F;1000).toFixed(3)).split(‘.’) &#x2F;&#x2F; 这里一定要保留三位小数,否则正数部分末位的0就会丢失,又转为String，因为Number没有split方法<br>          transStr &#x3D; whildStr[0] &#x2F;&#x2F; 每次都取小数点以前的(正数部分)<br>          resStr.unshift(whildStr<a target="_blank" rel="noopener" href="https://www.cnblogs.com/onepixel/p/5126046.html">1</a>) &#x2F;&#x2F; 向前插入小数点后的数字()<br>      }<br>      &#x2F;&#x2F; 除以1000剩下的数 + 每次除以1000后的数 + 原来小数<br>      let res2 &#x3D; newStr<a target="_blank" rel="noopener" href="https://www.cnblogs.com/onepixel/p/5126046.html">1</a>?(‘.’ + newStr<a target="_blank" rel="noopener" href="https://www.cnblogs.com/onepixel/p/5126046.html">1</a>):’’<br>      let resComma &#x3D; resStr.length?(‘,’ + resStr.join(‘,’)): ‘’<br>      return transStr + resComma + res2<br>    }<br>虽然实现代码很多，但个人觉得还算易懂</p>
+<p>网上看到用正则的，确实简短：</p>
+<pre><code>function strFilter2 (n) &#123;
+  let s = String(n)
+  let re = /\d&#123;1,3&#125;(?=(\d&#123;3&#125;)+$)/g
+  let n1 = s.replace(/^(\d+)((\.\d+)?)$/, function (s, s1, s2) &#123; return s1.replace(re, &#39;$&amp;,&#39;) + s2 &#125;)
+  return n1
+&#125;
+</code></pre>
+<p>其实正则在好多场景都体现出优势，只是不能被轻易想到</p>
+<p><strong>Q:以下this指向</strong></p>
+<pre><code>(function () &#123;
+  &quot;use strict&quot;;
+  console.log(this) // undefined
+&#125;)()
+(function () &#123;
+  &quot;use strict&quot;;
+  console.log(this) // window
+&#125;)()
+</code></pre>
+<p><strong>R:严格模式下，除构造函数、对象内置函数外，this均指向 undefined</strong></p>
+<p><strong>Q:script标签的 async、defer啥区别？</strong><br><strong>R:别说那没用的，上图</strong></p>
+<p><img src="/img/image-1.png" alt="Alt text"><br>啥也不加：script读取和解析脚本阶段都会阻断页面执行，<br>加async  : script解析脚本阶段会阻断页面执行<br>加defer   : scriptj脚本将在页面完成解析时执行</p>
+<p>Q:[1,2,3].map(parseInt)的结果？<br>R:之前用到parseInt，只知道是向下取整，翻了下w3c的parseInt定义: Crazy</p>
+<p><img src="/img/image-4.png" alt="Alt text"><br>再看map，</p>
+<p><img src="/img/image-5.png" alt="Alt text"><br>parseInt就是回调函数,map会传给parseInt三个参数，parseInt只识别前两个，<br>那也就是得到了 </p>
+<pre><code>function parseInt1 (item, index) &#123;
+  return parseInt(item,index)
+&#125;
+</code></pre>
+<p>得到  <code>parseInt(1,0) parseInt(2,1) parseInt(3,2)</code></p>
+<pre><code>parseInt(1,0)，parseInt定义radix不传或者0,按10进制，也就得到了1
+parseInt(2,1)，parseInt又定义第二个参数 radix 位于 2-36(除了0)，否则返回NaN,所以得到NaN
+
+parseInt(3,2),这个据说(网上)是 3不是 2的合法进制数 (只有0和1)，但是个人试了试
+parseInt(10,2) =&gt; 3，parseInt(20, 2) =&gt; 6,parseInt(30, 2) =&gt; NaN
+
+,发现只要是字符首字符小于 radix都是可以的，但是一旦首字符 &gt;= radix，就会返回NaN
+</code></pre>
+<p>参考文章：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/onepixel/p/5126046.html">判断js数据类型的四种方法</a></p>
+
+      </section>
+
+      
+      
+        <nav class="article-nav">
+          
+            <div class="article-nav-item layout-padding">
+  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
+    
+      <div class="card-cover" background-image-lazy data-img="/img/common/t3.jpg"></div>
+    
+    <div class="card-text">
+      
+        <a href="/2024/02/23/vite/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">vue-cli升级vite</h2>
+        </a>
+      
+      <div class="card-text--row">Newer</div>
+    </div>
+  </article>
+</div>
+          
+          
+        </nav>
+      
+
+      <section class="page-message-container layout-padding">
+        
+
+
+  
+  
+
+  
+  
+
+
+      </section>
+    </div>
+    <div class="widget-info">
+      <!--
+ * @Author: haobin.wang
+ * @Date: 2024-02-08 10:22:44
+ * @LastEditors: haobin.wang
+ * @LastEditTime: 2024-03-15 11:13:26
+ * @Description: Do not edit
+-->
+<section class="widget-author widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-body">
+    
+      <img src="/img/avatar.png" class="soft-size--round soft-style--box personal-avatar" alt="蓝天海礁">
+    
+    
+      <h2>蓝天海礁</h2>
+    
+    
+      <p>wonderful</p>
+    
+
+    <div class="count-box">
+      <div class="count-box--item">
+        <svg class="icon icon-article" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M240.51564747 647.74217627h196.07203239c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806V165.10332731c0-33.18142087-30.16492806-60.32985613-60.32985612-60.32985611H245.04038668C225.43318342 104.7734712 210.35071939 119.85593522 210.35071939 139.46313845V617.57724821c0 16.59071043 13.57421762 30.16492806 30.16492808 30.16492806z m663.62841731-452.47392089v482.63884894c0 33.18142087-27.14843525 60.32985613-60.32985612 60.32985613H180.18579134c-33.18142087 0-60.32985613-27.14843525-60.32985612-60.32985613V195.26825538c-49.77213131 0-90.49478418 40.72265287-90.49478417 90.49478417v452.4739209c0 49.77213131 40.72265287 90.49478418 90.49478417 90.49478417h286.56681657c16.59071043 0 30.16492806 13.57421762 30.16492807 30.16492807s13.57421762 30.16492806 30.16492805 30.16492806h90.49478418c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806s13.57421762-30.16492806 30.16492807-30.16492807h286.56681657c49.77213131 0 90.49478418-40.72265287 90.49478417-90.49478417V285.76303955c0-49.77213131-40.72265287-90.49478418-90.49478417-90.49478417zM587.41232014 647.74217627h191.54729318c19.60720323 0 34.68966726-15.08246403 34.68966729-34.68966727V134.93839925c0-16.59071043-13.57421762-30.16492806-30.16492808-30.16492805H617.57724821c-30.16492806 0-60.32985613 27.14843525-60.32985612 60.32985611v452.4739209c0 16.59071043 13.57421762 30.16492806 30.16492805 30.16492806z" fill="currentColor"></path>
+</svg>
+        <span>4</span>
+      </div>
+      <div class="count-box--item">
+        <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
+</svg>
+        2
+      </div>
+      <div class="count-box--item">
+        <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
+</svg>
+        0
+      </div>
+    </div>
+  </div>
+</section>
+<script src="../plug-in/util.js"></script>
+<script>
+  console.log('dbclick', dbClick);
+  document.querySelector('.personal-avatar').addEventListener('click', () => {
+    alert(12)
+  });
+</script>
+
+      
+<section class="widget-toc widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-toc" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M134.50666666 767.46666668H460.8c27.73333333 0 50.24000001 22.50666668 50.24000001 50.23999999v50.13333333c0 27.73333333-22.50666668 50.24000001-50.24000001 50.24000001H134.50666666c-27.73333333 0-50.24000001-22.50666668-50.23999999-50.24000001v-50.13333333c0.10666668-27.73333333 22.50666668-50.24000001 50.24000001-50.24000001zM84.37333332 541.65333333h326.18666669c27.73333333 0 50.24000001 22.39999999 50.23999999 50.13333334v50.24000001c0 27.73333333-22.50666668 50.24000001-50.24000002 50.23999999H84.37333332c-27.73333333 0-50.24000001-22.50666668-50.23999999-50.23999999v-50.24000001c0-27.73333333 22.50666668-50.13333334 50.24000001-50.13333334zM134.50666666 315.83999999H460.8c27.73333333 0 50.24000001 22.50666668 50.24000001 50.24000001v50.24000001c0 27.73333333-22.50666668 50.13333334-50.24000001 50.13333333H134.50666666c-27.73333333 0-50.24000001-22.39999999-50.23999999-50.13333333v-50.24000001c0.10666668-27.84000001 22.50666668-50.24000001 50.24000001-50.23999999zM209.81333332 89.91999999h326.18666671c27.73333333 0 50.24000001 22.39999999 50.23999997 50.13333335v50.23999999c0 27.73333333-22.50666668 50.24000001-50.24000001 50.24000001H209.81333332c-27.73333333 0-50.24000001-22.50666668-50.23999999-50.24000001v-50.24000001c0-27.73333333 22.50666668-50.13333334 50.24000001-50.13333333zM692.05333333 623.36l274.66666669 176.00000002c23.36000001 14.93333333 30.08 45.97333334 15.14666666 69.33333332L954.77333334 910.93333333c-14.93333333 23.25333334-45.97333334 30.08-69.33333335 15.14666667l-274.66666666-176c-23.36000001-14.93333333-30.08-45.97333334-15.14666667-69.33333333l27.09333334-42.24000001c14.93333333-23.36000001 46.08000001-30.08 69.33333333-15.14666666z" fill="currentColor"></path>
+</svg>
+    <span>TOC</span>
+  </div>
+  <div class="widget-body">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80%EF%BC%9A%E5%B0%8F%E6%97%B6%E5%80%99%E5%BE%88%E6%B8%B4%E6%9C%9B%E9%95%BF%E5%A4%A7%EF%BC%8C%E7%BE%A1%E6%85%95%E5%A4%A7%E4%BA%BA%E4%BB%AC%E7%9A%84%E8%B4%A2%E5%AF%8C%E8%87%AA%E7%94%B1%EF%BC%9B%E9%95%BF%E5%A4%A7%E5%90%8E%E5%8F%88%E5%BE%88%E7%BE%A1%E6%85%95%E5%B0%8F%E6%97%B6%E5%80%99%EF%BC%8C%E6%80%80%E5%BF%B5%E5%B0%8F%E6%97%B6%E5%80%99%E7%9A%84%E6%97%A0%E5%BF%A7%E6%97%A0%E8%99%91%EF%BC%8C%E5%AE%88%E5%80%99%E7%9D%80%E9%82%A3%E4%BB%BD%E5%A4%A9%E7%9C%9F%E3%80%82%E5%93%A6%EF%BC%8C%E8%BF%98%E6%9C%89%EF%BC%8C%E4%B8%8D%E6%98%AF%E9%95%BF%E5%A4%A7%E5%B0%B1%E8%83%BD%E8%B4%A2%E5%AF%8C%E8%87%AA%E7%94%B1%E3%80%82%E3%80%82%E3%80%82%E4%B8%80%EF%BC%9Ajs%E7%BB%A7%E6%89%BF"><span class="toc-number">1.</span> <span class="toc-text">  前言：小时候很渴望长大，羡慕大人们的财富自由；长大后又很羡慕小时候，怀念小时候的无忧无虑，守候着那份天真。哦，还有，不是长大就能财富自由。。。一：js继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%EF%BC%9A%E4%BA%8B%E4%BB%B6%E7%9A%84%E5%87%A0%E4%B8%AA%E9%98%B6%E6%AE%B5%EF%BC%9A%E6%8D%95%E8%8E%B7%E3%80%81%E7%9B%AE%E6%A0%87-event-target%EF%BC%8C%E5%8D%B3%E8%A7%A6%E5%8F%91%E8%BF%87%E7%A8%8B-%E3%80%81%E5%86%92%E6%B3%A1"><span class="toc-number">2.</span> <span class="toc-text">三：事件的几个阶段：捕获、目标(event.target，即触发过程)、冒泡</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%EF%BC%9A%E5%88%A4%E6%96%AD%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%8C%E8%BF%94%E5%9B%9E%E6%95%B0%E6%8D%AE%E7%9A%84%E5%85%B7%E4%BD%93%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.</span> <span class="toc-text">四：判断数据类型，返回数据的具体类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%EF%BC%9A%E5%8D%83%E5%88%86%E4%BD%8D%E7%9A%84%E5%AE%9E%E7%8E%B0"><span class="toc-number">4.</span> <span class="toc-text">五：千分位的实现</span></a></li></ol>
+  </div>
+</section>
+
+
+      
+<section class="widet-notice widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-notice" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M512 945.02305225v28.15620663a24.27259221 24.27259221 0 0 1-24.27259221 24.27259335H394.0352a48.54518557 48.54518557 0 0 1-41.74885888-23.78714112l-110.68302222-184.47170332a132.04290333 132.04290333 0 0 1-17.47626667-48.54518557h118.4502511a200.97706667 200.97706667 0 0 1 76.21594113 14.56355556l20.38897777 133.49925888a48.54518557 48.54518557 0 0 0 36.40888888 27.67075555l16.01991111 2.91271112a24.27259221 24.27259221 0 0 1 20.38897778 25.72894889zM997.45185223 463.45481443a194.18074112 194.18074112 0 0 1-38.8361489 116.50844445 24.75804445 24.75804445 0 0 1-36.4088889 0l-34.95253333-34.95253333a24.27259221 24.27259221 0 0 1-2.91271111-30.58346667 97.09036999 97.09036999 0 0 0 0-106.79940665 24.27259221 24.27259221 0 0 1 2.91271111-30.58346666l34.95253333-34.95253334a24.75804445 24.75804445 0 0 1 18.93262223-7.28177777 26.2144 26.2144 0 0 1 17.47626667 9.70903665A194.18074112 194.18074112 0 0 1 997.45185223 463.45481443z m-194.18074112-388.36148111v776.72296335a48.54518557 48.54518557 0 0 1-48.54518556 48.54518443h-28.64165888a48.54518557 48.54518557 0 0 1-33.98163001-14.07810332l-145.63555556-143.20829668A291.27111111 291.27111111 0 0 0 342.57730333 657.63555556H172.18370333a145.63555556 145.63555556 0 0 1-145.63555556-145.63555556v-97.09036999a145.63555556 145.63555556 0 0 1 145.63555556-145.63555556h170.3936a291.27111111 291.27111111 0 0 0 206.31703779-85.43952668l145.63555555-143.20829554a48.54518557 48.54518557 0 0 1 33.98162888-14.07810446H754.72592555a48.54518557 48.54518557 0 0 1 48.54518556 48.54518555z" fill="currentColor"></path>
+</svg>
+    <span>NOTICE</span>
+  </div>
+  <div class="widget-body">
+    <p>做个有趣的人</p>
+  </div>
+</section>
+
+
+      <section class="widget-categorys widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
+</svg>
+    <span>CATEGORYS</span>
+  </div>
+  <div class="widget-body">
+    <ul class="categorys-list">
+      
+        <li class="categorys-list-item">
+          <a href="/categories/js/">
+            js (1)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
+          <a href="/categories/%E8%84%9A%E6%89%8B%E6%9E%B6/">
+            脚手架 (1)
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+</section>
+
+      <section class="widget-tags widget-item  layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
+</svg>
+    <span>TAGS</span>
+  </div>
+  <div class="widget-body">
+    <div class="tags-cloud">
+      
+    </div>
+  </div>
+</section>
+    </div>
+  </article>
+</div>
+
+    <!-- footer container -->
+<footer id="footer" class="footer">
+  <div class="footer-container">
+    
+    <div class="social-icons">
+      
+        
+      
+        
+      
+        
+      
+        
+          <a href="https://github.com/lantianhaijiao" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
+            <svg class="icon icon-github" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M64.6 512c0 195.6 125.4 361.9 300.1 422.9 23.5 5.9 19.9-10.8 19.9-22.2v-77.6c-135.8 15.9-141.3-74-150.5-89-18.5-31.5-61.9-39.5-49-54.5 31-15.9 62.5 4 98.9 58 26.4 39.1 77.9 32.5 104.1 26 5.7-23.5 17.9-44.5 34.7-60.9-140.7-25.2-199.4-111.1-199.4-213.3 0-49.5 16.4-95.1 48.4-131.8-20.4-60.6 1.9-112.4 4.9-120.1 58.2-5.2 118.5 41.6 123.3 45.3 33.1-8.9 70.8-13.7 112.9-13.7 42.4 0 80.3 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.4-43.9 2.9 7.7 24.7 58.3 5.5 118.1 32.5 36.8 49 82.8 49 132.4 0 102.3-59 188.3-200.2 213.2 23.5 23.3 38.1 55.5 38.1 91.1v112.7c0.8 9 0 17.9 15.1 17.9C832.7 877 960.4 709.4 960.4 512.1c0-247.5-200.6-447.9-447.9-447.9C265 64.1 64.6 264.5 64.6 512z"></path>
+</svg>
+          </a>
+        
+      
+    </div>
+     
+    <p>&copy; 2024 <a href="/" target="_blank">lantianhaijiao</a></p>
+
+    
+
+    <p>Powered by <a href="https://hexo.io" target="_blank" rel="noopener noreferrer">Hexo</a> Theme - <a href="https://github.com/miiiku/flex-block" target="_blank" rel="noopener noreferrer author">flex-block</a></p>
+
+    <p>
+      <a href="javascript:;" id="theme-light">🌞 浅色</a>
+      <a href="javascript:;" id="theme-dark">🌛 深色</a>
+      <a href="javascript:;" id="theme-auto">🤖️ 自动</a>
+    </p>
+  </div>
+</footer>
+  </div>
+
+  <div class="back-to-top-fixed soft-size--round soft-style--box">
+    <svg class="icon icon-back-to-top" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <path d="M725.333333 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8l-213.333333-213.333333c-17.066667-17.066667-17.066667-42.666667 0-59.733333s42.666667-17.066667 59.733333 0l213.333333 213.333333c17.066667 17.066667 17.066667 42.666667 0 59.733333C746.666667 422.4 738.133333 426.666667 725.333333 426.666667z"></path>
+      <path d="M298.666667 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8-17.066667-17.066667-17.066667-42.666667 0-59.733333l213.333333-213.333333c17.066667-17.066667 42.666667-17.066667 59.733333 0s17.066667 42.666667 0 59.733333l-213.333333 213.333333C320 422.4 311.466667 426.666667 298.666667 426.666667z"></path>
+      <path d="M512 896c-25.6 0-42.666667-17.066667-42.666667-42.666667L469.333333 170.666667c0-25.6 17.066667-42.666667 42.666667-42.666667s42.666667 17.066667 42.666667 42.666667l0 682.666667C554.666667 878.933333 537.6 896 512 896z"></path>
+    </svg>
+  </div>
+
+  
+  <!-- aplayer -->
+
+
+<!-- dplayer -->
+
+
+<!-- copy button  -->
+<script src="/js/clipboard.min.js" defer></script>
+
+<!-- https://clipboardjs.com/ -->
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  
+  <!-- 尾部用户自定义相关内容 -->
+</body>
+</html>
