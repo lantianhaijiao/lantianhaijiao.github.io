@@ -636,6 +636,127 @@ html.show-mobile-nav .navbar-list {
   font-size: var(--font-base-size);
   margin-top: 10px;
 }
+.page-title span {
+  display: inline-block;
+  animation: jump 5s ease-in-out infinite;
+  animation-delay: var(--delay);
+}
+.typing-box {
+  display: flex;
+  flex-direction: column;
+}
+.typing-hide {
+  opacity: 0;
+  display: inline-block;
+  height: 1px;
+  margin: 0 auto;
+}
+.typing {
+  width: var(--typingW);
+  height: 1.5em;
+  border-right: 1px solid transparent;
+  animation: typing 3.5s steps(37, end), blink-caret 0.75s step-end infinite;
+  word-break: break-all;
+  overflow: hidden;
+  margin: 0 auto;
+  display: inline-block;
+}
+@-moz-keyframes jump {
+  0%, 20% {
+    transform: translateY(0);
+  }
+  10% {
+    transform: translateY(-10px);
+  }
+}
+@-webkit-keyframes jump {
+  0%, 20% {
+    transform: translateY(0);
+  }
+  10% {
+    transform: translateY(-10px);
+  }
+}
+@-o-keyframes jump {
+  0%, 20% {
+    transform: translateY(0);
+  }
+  10% {
+    transform: translateY(-10px);
+  }
+}
+@keyframes jump {
+  0%, 20% {
+    transform: translateY(0);
+  }
+  10% {
+    transform: translateY(-10px);
+  }
+}
+@-moz-keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--typingW);
+  }
+}
+@-webkit-keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--typingW);
+  }
+}
+@-o-keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--typingW);
+  }
+}
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--typingW);
+  }
+}
+@-moz-keyframes blink-caret {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: currentColor;
+  }
+}
+@-webkit-keyframes blink-caret {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: currentColor;
+  }
+}
+@-o-keyframes blink-caret {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: currentColor;
+  }
+}
+@keyframes blink-caret {
+  from, to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: currentColor;
+  }
+}
 .footer {
   width: 100%;
   padding: 20px;

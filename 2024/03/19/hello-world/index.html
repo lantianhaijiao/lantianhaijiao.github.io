@@ -126,6 +126,20 @@
   
   
 </header>
+<script type="text/javascript">
+  var h1 = document.querySelector('.page-title');
+  h1.innerHTML = h1.innerText.replace(/\S/g, "<span>$&</span>");
+  var spanList = [].slice.call(h1.querySelectorAll('span'));
+  console.log('spanList', spanList);
+  spanList.map((span, index) => {
+    span.style.setProperty('--delay', parseInt((index * 0.2 * 100)) / 100 + 's');
+  });
+  var typing = document.querySelector('.typing');
+  const typingHide = document.querySelector('.typing-hide');
+  console.log('w', typingHide.getBoundingClientRect().width);
+  typing.style.setProperty('--typingW', typingHide.getBoundingClientRect().width + 10 + 'px');
+  // typing.style.setProperty('--typingAni', typingHide.getBoundingClientRect().width + 20 + 'px');
+</script>
 
     <!-- 文章 -->
 
@@ -196,7 +210,7 @@
  * @Author: haobin.wang
  * @Date: 2024-02-08 10:22:44
  * @LastEditors: haobin.wang
- * @LastEditTime: 2024-03-19 15:29:00
+ * @LastEditTime: 2024-03-19 15:34:08
  * @Description: Do not edit
 -->
 <section class="widget-author widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
@@ -237,7 +251,7 @@
 <script>
   const avatar = document.querySelector('.personal-avatar');
   const dbClickHandle = dbClick(function () {
-    console.log('click', avatar.className);
+    // console.log('click', avatar.className);
     if (avatar.className.indexOf('shake') == -1) {
       avatar.classList.add('shake');
     }
