@@ -1,11 +1,21 @@
+<!--
+ * @Author: haobin.wang
+ * @Date: 2024-02-05 18:15:03
+ * @LastEditors: haobin.wang
+ * @LastEditTime: 2024-04-07 11:21:35
+ * @Description: Do not edit
+-->
 <script setup lang="ts">
+import { ref } from 'vue';
 defineProps<{
   msg: string
 }>()
+const date = ref();
 </script>
 
 <template>
   <div class="greetings">
+    <VueDatePicker v-model="date" :week-picker="true"></VueDatePicker>
     <h1 class="green">{{ msg }}</h1>
     <h3>
       You’ve successfully created a project with

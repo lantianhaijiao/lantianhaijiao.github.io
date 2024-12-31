@@ -3,7 +3,7 @@
  * @Author: haobin.wang
  * @Date: 2024-03-18 16:40:49
  * @LastEditors: haobin.wang
- * @LastEditTime: 2024-03-19 11:28:58
+ * @LastEditTime: 2024-03-19 16:27:20
  * @Description: Do not edit
  */
 import { chalk, echo, os } from 'zx';
@@ -28,17 +28,18 @@ const _rmSource = async (arr = []) => {
   $.verbose = true;
 }
 const delatePath = getPath('../../blog/themes/flexblock/source/docs');
-await _rmSource([getPath(targetPath)]);
-echo(`已删除: ${targetPath}`);
+await _rmSource([getPath(delatePath)]);
+echo(`已删除: ${delatePath}`);
 // 需要先删除blog下的docs包
 await $`npm run build`;
-const runBlog = async () => {
-  $.verbose = true;
+const deployBlog = async () => {
+  $.verbose = false;
   cd('../blog')
-  $`pwd`
-  await $`npm run server`
-};
+  await $`npm run pb`
+  $.verbose = true;
+}
 const targetPath = getPath('../../blog/themes/flexblock/source');
 _cpSource(getPath('../docs'), targetPath);
 echo(`复制成功！请查看:${chalk.green.underline(targetPath)}`);
-runBlog();
+deployBlog();
+echo('部署成功');

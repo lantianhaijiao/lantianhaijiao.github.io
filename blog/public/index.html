@@ -90,9 +90,12 @@
   
     <div class="header-content">
       <div class="post-text layout-block layout-padding">
-        <h1 class="title-wrap">蓝天海礁</h1>
+        <h1 class="title-wrap page-title">蓝天海礁</h1>
         
-          <h2 class="title-sub-wrap">虽然有很多虽然，但是我只要一个但是就够了</h2>
+          <h2 class="title-sub-wrap typing-box">
+            <p class="typing-hide">虽然有很多虽然，但是我只要一个但是就够了</p>
+            <p class="typing">虽然有很多虽然，但是我只要一个但是就够了</p>
+          </h2>
         
       </div>
     </div>
@@ -114,6 +117,20 @@
   
   
 </header>
+<script type="text/javascript">
+  var h1 = document.querySelector('.page-title');
+  h1.innerHTML = h1.innerText.replace(/\S/g, "<span>$&</span>");
+  var spanList = [].slice.call(h1.querySelectorAll('span'));
+  console.log('spanList', spanList);
+  spanList.map((span, index) => {
+    span.style.setProperty('--delay', parseInt((index * 0.2 * 100)) / 100 + 's');
+  });
+  var typing = document.querySelector('.typing');
+  const typingHide = document.querySelector('.typing-hide');
+  console.log('w', typingHide.getBoundingClientRect().width);
+  typing.style.setProperty('--typingW', typingHide.getBoundingClientRect().width + 10 + 'px');
+  // typing.style.setProperty('--typingAni', typingHide.getBoundingClientRect().width + 20 + 'px');
+</script>
 
     <!-- 首页 -->
 

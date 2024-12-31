@@ -10,9 +10,11 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "pb": "zx script/publish.mjs"
+    "deploy": "zx scripts/deploy.mjs",
+    "blog:run": "zx scripts/blogRun.mjs"
   },
   "dependencies": {
+    "@vuepic/vue-datepicker": "^8.3.2",
     "pinia": "^2.1.7",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5"

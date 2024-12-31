@@ -2,7 +2,7 @@
  * @Author: haobin.wang
  * @Date: 2024-02-05 18:15:03
  * @LastEditors: haobin.wang
- * @LastEditTime: 2024-03-19 10:55:14
+ * @LastEditTime: 2024-03-19 14:49:27
  * @Description: Do not edit
 -->
 <script setup lang="ts">
@@ -18,7 +18,7 @@ import HelloWorld from './components/HelloWorld.vue'
       <HelloWorld msg="You did it!" />
 
       <nav>
-        <RouterLink to="/">Home3</RouterLink>
+        <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav>
     </div>
