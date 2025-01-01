@@ -24,7 +24,7 @@
 
   
 
-  <title>踩坑记 | 蓝天海礁</title>
+  <title>Hello Hexo | 蓝天海礁</title>
 
   
 
@@ -50,7 +50,7 @@
 <!-- header container -->
 <header class="header-container post">
   
-    <div class="post-image" style="background-image: url(/img/common/t4.jpeg)"></div>
+    <div class="post-image" style="background-image: url(/img/common/t2.jpg)"></div>
   
 
   <!-- navbar -->
@@ -108,17 +108,12 @@
     <div class="header-content">
       <div class="post-text layout-block">
         <div class="layout-margin">
-          <h1 class="title-wrap">踩坑记</h1>
+          <h1 class="title-wrap">Hello Hexo</h1>
           <h2 class="title-sub-wrap">
             <strong>lantianhaijiao</strong>
             <span>发布于</span>
-            <time  class="article-date" datetime="2024-03-14T12:18:13.000Z" itemprop="datePublished">2024-03-14</time>
+            <time  class="article-date" datetime="2024-12-31T01:50:14.865Z" itemprop="datePublished">2024-12-31</time>
           </h2>
-          
-            <h2 class="last-time">
-              <span>最后更新于</span>
-              <time  class="article-updated" datetime="2024-12-31T01:50:14.865Z" itemprop="dateUpdated">2024-12-31</time>
-            </h2>
           
           
           <ul class="wrap-list dark">
@@ -166,33 +161,19 @@
       
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <h1 id="持续更新"><a href="#持续更新" class="headerlink" title="持续更新"></a>持续更新</h1><h2 id="Cookie在部分ios上设置值失效"><a href="#Cookie在部分ios上设置值失效" class="headerlink" title="Cookie在部分ios上设置值失效"></a>Cookie在部分ios上设置值失效</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Cookies.set(luckyKey, &#123; expires: 1 &#125;); // ❌</span><br><span class="line">Cookies.set(luckyKey, 1, &#123; expires: 1 &#125;); // ✅</span><br></pre></td></tr></table></figure>
-<hr>
-<h2 id="Video自定义-播放按钮层级问题"><a href="#Video自定义-播放按钮层级问题" class="headerlink" title="Video自定义 播放按钮层级问题"></a>Video自定义 播放按钮层级问题</h2><p>Q: 播放按钮在部分ios手机上点击播放后会在下层(已设置z-index)<br>A: 给video标签设置position, 此时产生了一个问题，点击播放后，会闪几下(应该是封面和视频的间隙)，解决闪烁可以去掉封面，使用div背景做封面解决<br>Q: 有的ios手机会出现播放按钮(h5无此图标,应该是webview渲染的)<br>A: 监听视频播放状态，视频播放的时候再显示video</p>
-<hr>
-<h2 id="swiper插件-在ios高版本上item内的所有内容无法点击-复现机型-iphone-14-pro-max-17-x"><a href="#swiper插件-在ios高版本上item内的所有内容无法点击-复现机型-iphone-14-pro-max-17-x" class="headerlink" title="swiper插件 在ios高版本上item内的所有内容无法点击(复现机型 iphone 14 pro max 17.x)"></a>swiper插件 在ios高版本上item内的所有内容无法点击(复现机型 iphone 14 pro max 17.x)</h2><p>Q: 使用了swiper轮播插件，在高版本ios上多个swiper-item时，中间的translate3d z轴出现负数,导致层级在下边，整个swiper-item无法点击<br>A: 强制设置z轴为0<br>.swiper-slide{<br>  &amp;.swiper-slide-active{<br>    transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) scale(1) !important;<br>  }<br>}</p>
-<hr>
-<h2 id="h5在iOS点击出现的高亮黑色背景层"><a href="#h5在iOS点击出现的高亮黑色背景层" class="headerlink" title="h5在iOS点击出现的高亮黑色背景层"></a>h5在iOS点击出现的高亮黑色背景层</h2><p>-webkit-tap-highlight-color:transparent;<br>-webkit-tap-highlight-color: rgba(0, 0, 0, 0);<br>tap-highlight-color: rgba(0, 0, 0, 0);</p>
-<hr>
-<h2 id="html内动态引入图片"><a href="#html内动态引入图片" class="headerlink" title="html内动态引入图片"></a>html内动态引入图片</h2><p>backgroundImage: item.gold ? <code>url($&#123;require(</code>..&#x2F;..&#x2F;web-sync&#x2F;img&#x2F;ball&#x2F;${item.gold}.png<code>)&#125;)</code> : ‘’</p>
-<h2 id="swiper自适应高度-降低滑动灵敏度"><a href="#swiper自适应高度-降低滑动灵敏度" class="headerlink" title="swiper自适应高度,降低滑动灵敏度"></a>swiper自适应高度,降低滑动灵敏度</h2><p>:autoHeight&#x3D;”true” &#x2F;&#x2F; 自适应高度<br>:touchRatio&#x3D;”0.2” &#x2F;&#x2F; 降低滑动灵敏度<br>如何把内容加到页码(swiper-pagination)和swiper-slide中间</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const pagination = &#123;</span><br><span class="line">  el: &#x27;.swiper-pagination&#x27;,</span><br><span class="line">  clickable: true,</span><br><span class="line">  renderBullet: function (index, className) &#123;</span><br><span class="line">    return &#x27;&lt;span class=&quot;&#x27; + className + &#x27;&quot;&gt;&lt;/span&gt;&#x27;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="类似stroke效果-使用shadow"><a href="#类似stroke效果-使用shadow" class="headerlink" title="类似stroke效果,使用shadow"></a>类似stroke效果,使用shadow</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">text-shadow: #FF7E5E 1px 0 0,#FF7E5E 0 1px 0,#FF7E5E -1px 0 0,#FF7E5E 0 -1px 0;</span><br></pre></td></tr></table></figure>
-<h2 id="animation动画抖动"><a href="#animation动画抖动" class="headerlink" title="animation动画抖动"></a>animation动画抖动</h2><p>Q: animation动画(大小会变), 在ios上和相邻定位元素出现层级错乱频闪<br>A: 给父元素设置overflow:hidden;</p>
-<hr>
-<h2 id="css动画函数复用"><a href="#css动画函数复用" class="headerlink" title="css动画函数复用"></a>css动画函数复用</h2><p>Q: 相同动画，不同的结束位置,复用同一个keyframes, </p>
-<p>一个列表，每个元素有transform属性，想透传给@keyframes</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@keyframes fadeInTopRight &#123;</span><br><span class="line">  from &#123;</span><br><span class="line">    opacity: 0;</span><br><span class="line">    transform: translate3d(375px, -1200px, 0);</span><br><span class="line">  &#125;</span><br><span class="line">  to &#123;</span><br><span class="line">    opacity: 1;</span><br><span class="line">    transform:  translate3d(100%, 100%, 0);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>A:</p>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/coco1s/p/17186878.html">https://www.cnblogs.com/coco1s/p/17186878.html</a></p>
-</blockquote>
-<p>将结束动画设置获取变量，但是变量是每个item的变量<br>vue</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;bet-icon</span><br><span class="line">  :num=&quot;k.num&quot;</span><br><span class="line">  v-for=&quot;k in currentBetting[item]&quot;</span><br><span class="line">  :key=&quot;k.id&quot;</span><br><span class="line">  :style=&quot;&#123;</span><br><span class="line">    transform: k.transform,</span><br><span class="line">    animationDuring: k.animationDuring,</span><br><span class="line">    animationDelay: k.animationDelay,</span><br><span class="line">    zIndex: k.zIndex,</span><br><span class="line">    &#x27;--end&#x27;: k.end</span><br><span class="line">  &#125;&quot;</span><br><span class="line">  :class=&quot;&#123;self: k.self&#125;&quot;</span><br><span class="line">  &gt;&lt;/bet-icon&gt;</span><br></pre></td></tr></table></figure>
-<p>css</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@keyframes fadeInTopRight &#123;</span><br><span class="line">  from &#123;</span><br><span class="line">    opacity: 0;</span><br><span class="line">    transform: translate3d(375px, -1200px, 0);</span><br><span class="line">  &#125;</span><br><span class="line">  to &#123;</span><br><span class="line">    opacity: 1;</span><br><span class="line">    transform:  var(--end);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 
       </section>
 
@@ -203,12 +184,12 @@
             <div class="article-nav-item layout-padding">
   <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
     
-      <div class="card-cover" background-image-lazy data-img="/img/common/t5.jpg"></div>
+      <div class="card-cover" background-image-lazy data-img="/img/common/t7.jpg"></div>
     
     <div class="card-text">
       
-        <a href="/2024/03/22/js-common/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">js常用</h2>
+        <a href="/2024/12/31/pag/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">Vs Code之-pag预览拓展</h2>
         </a>
       
       <div class="card-text--row">Newer</div>
@@ -220,12 +201,12 @@
             <div class="article-nav-item layout-padding">
   <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
     
-      <div class="card-cover" background-image-lazy data-img="/img/common/t3.jpg"></div>
+      <div class="card-cover" background-image-lazy data-img="/img/common/t5.jpg"></div>
     
     <div class="card-text">
       
-        <a href="/2024/02/23/vite/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">vue-cli升级vite</h2>
+        <a href="/2024/03/22/js-common/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">js常用</h2>
         </a>
       
       <div class="card-text--row">Older</div>
@@ -307,6 +288,18 @@
 </script>
 
       
+<section class="widget-toc widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-toc" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M134.50666666 767.46666668H460.8c27.73333333 0 50.24000001 22.50666668 50.24000001 50.23999999v50.13333333c0 27.73333333-22.50666668 50.24000001-50.24000001 50.24000001H134.50666666c-27.73333333 0-50.24000001-22.50666668-50.23999999-50.24000001v-50.13333333c0.10666668-27.73333333 22.50666668-50.24000001 50.24000001-50.24000001zM84.37333332 541.65333333h326.18666669c27.73333333 0 50.24000001 22.39999999 50.23999999 50.13333334v50.24000001c0 27.73333333-22.50666668 50.24000001-50.24000002 50.23999999H84.37333332c-27.73333333 0-50.24000001-22.50666668-50.23999999-50.23999999v-50.24000001c0-27.73333333 22.50666668-50.13333334 50.24000001-50.13333334zM134.50666666 315.83999999H460.8c27.73333333 0 50.24000001 22.50666668 50.24000001 50.24000001v50.24000001c0 27.73333333-22.50666668 50.13333334-50.24000001 50.13333333H134.50666666c-27.73333333 0-50.24000001-22.39999999-50.23999999-50.13333333v-50.24000001c0.10666668-27.84000001 22.50666668-50.24000001 50.24000001-50.23999999zM209.81333332 89.91999999h326.18666671c27.73333333 0 50.24000001 22.39999999 50.23999997 50.13333335v50.23999999c0 27.73333333-22.50666668 50.24000001-50.24000001 50.24000001H209.81333332c-27.73333333 0-50.24000001-22.50666668-50.23999999-50.24000001v-50.24000001c0-27.73333333 22.50666668-50.13333334 50.24000001-50.13333333zM692.05333333 623.36l274.66666669 176.00000002c23.36000001 14.93333333 30.08 45.97333334 15.14666666 69.33333332L954.77333334 910.93333333c-14.93333333 23.25333334-45.97333334 30.08-69.33333335 15.14666667l-274.66666666-176c-23.36000001-14.93333333-30.08-45.97333334-15.14666667-69.33333333l27.09333334-42.24000001c14.93333333-23.36000001 46.08000001-30.08 69.33333333-15.14666666z" fill="currentColor"></path>
+</svg>
+    <span>TOC</span>
+  </div>
+  <div class="widget-body">
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+  </div>
+</section>
+
 
       
 <section class="widet-notice widget-item layout-margin content-padding--primary soft-size--large soft-style--box">

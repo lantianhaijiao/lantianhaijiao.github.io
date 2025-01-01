@@ -85,6 +85,11 @@
     </div>
   </div>
 </nav>
+<script type="text/javascript">
+  document.addEventListener("focusUser", event => {
+    console.log("nav收到事件",event);
+  })
+</script>
 
   
   
@@ -115,17 +120,21 @@
 </header>
 <script type="text/javascript">
   var h1 = document.querySelector('.page-title');
-  h1.innerHTML = h1.innerText.replace(/\S/g, "<span>$&</span>");
-  var spanList = [].slice.call(h1.querySelectorAll('span'));
-  console.log('spanList', spanList);
-  spanList.map((span, index) => {
-    span.style.setProperty('--delay', parseInt((index * 0.2 * 100)) / 100 + 's');
-  });
-  var typing = document.querySelector('.typing');
-  const typingHide = document.querySelector('.typing-hide');
-  console.log('w', typingHide.getBoundingClientRect().width);
-  typing.style.setProperty('--typingW', typingHide.getBoundingClientRect().width + 10 + 'px');
-  // typing.style.setProperty('--typingAni', typingHide.getBoundingClientRect().width + 20 + 'px');
+  if (h1) {
+    h1.innerHTML = h1.innerText.replace(/\S/g, "<span>$&</span>");
+    var spanList = [].slice.call(h1.querySelectorAll('span'));
+    spanList.map((span, index) => {
+      span.style.setProperty('--delay', parseInt((index * 0.2 * 100)) / 100 + 's');
+    });
+    h1.addEventListener('click', () => {
+      const focusUser = new Event("focusUser");
+      console.log('click', focusUser);
+      document.dispatchEvent(focusUser);
+    });
+    var typing = document.querySelector('.typing');
+    const typingHide = document.querySelector('.typing-hide');
+    typing.style.setProperty('--typingW', typingHide.getBoundingClientRect().width + 10 + 'px');
+  }
 </script>
 
     <!-- 分类归档 -->
@@ -153,7 +162,7 @@
             
               <div class="last-time">
                 <span>更新于</span>
-                <time  class="article-updated" datetime="2024-03-19T03:33:54.122Z" itemprop="dateUpdated">2024-03-19</time>
+                <time  class="article-updated" datetime="2024-12-31T02:42:17.066Z" itemprop="dateUpdated">2024-12-31</time>
               </div>
             
             <ul class="wrap-list dark">

@@ -24,7 +24,7 @@
 
   
 
-  <title>踩坑记 | 蓝天海礁</title>
+  <title>js常用 | 蓝天海礁</title>
 
   
 
@@ -50,7 +50,7 @@
 <!-- header container -->
 <header class="header-container post">
   
-    <div class="post-image" style="background-image: url(/img/common/t4.jpeg)"></div>
+    <div class="post-image" style="background-image: url(/img/common/t5.jpg)"></div>
   
 
   <!-- navbar -->
@@ -108,11 +108,11 @@
     <div class="header-content">
       <div class="post-text layout-block">
         <div class="layout-margin">
-          <h1 class="title-wrap">踩坑记</h1>
+          <h1 class="title-wrap">js常用</h1>
           <h2 class="title-sub-wrap">
             <strong>lantianhaijiao</strong>
             <span>发布于</span>
-            <time  class="article-date" datetime="2024-03-14T12:18:13.000Z" itemprop="datePublished">2024-03-14</time>
+            <time  class="article-date" datetime="2024-03-22T11:16:11.000Z" itemprop="datePublished">2024-03-22</time>
           </h2>
           
             <h2 class="last-time">
@@ -166,33 +166,30 @@
       
       
       <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
-        <h1 id="持续更新"><a href="#持续更新" class="headerlink" title="持续更新"></a>持续更新</h1><h2 id="Cookie在部分ios上设置值失效"><a href="#Cookie在部分ios上设置值失效" class="headerlink" title="Cookie在部分ios上设置值失效"></a>Cookie在部分ios上设置值失效</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Cookies.set(luckyKey, &#123; expires: 1 &#125;); // ❌</span><br><span class="line">Cookies.set(luckyKey, 1, &#123; expires: 1 &#125;); // ✅</span><br></pre></td></tr></table></figure>
+        <h2 id="根据key相同合并对象"><a href="#根据key相同合并对象" class="headerlink" title="根据key相同合并对象"></a>根据key相同合并对象</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 合并奖励</span><br><span class="line"> * @param &#123;Array[object]&#125;</span><br><span class="line"> * @param &#123;key&#125; 根据key相同合并</span><br><span class="line"> * @returns &#123;Array[object]&#125; frequency为数量</span><br><span class="line">*/</span><br><span class="line">export const mergeRewards = (rewards, key = &#x27;position&#x27;) =&gt; &#123;</span><br><span class="line">  return rewards.reduce((obj, item) =&gt; &#123;</span><br><span class="line">    let newItem = &#123;</span><br><span class="line">      ...item,</span><br><span class="line">      frequency: 1</span><br><span class="line">    &#125;;</span><br><span class="line">    const find = obj.find(k =&gt; k[key] === item[key]);</span><br><span class="line">    if (find) &#123;</span><br><span class="line">      find.frequency++;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      obj.push(newItem)</span><br><span class="line">    &#125;</span><br><span class="line">    return obj;</span><br><span class="line">  &#125;, []);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="object-Map-WeakMap"><a href="#object-Map-WeakMap" class="headerlink" title="object&#x2F;Map&#x2F;WeakMap"></a>object&#x2F;Map&#x2F;WeakMap</h2><table>
+<thead>
+<tr>
+<th>表头</th>
+<th>表头</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>单元格</td>
+<td>单元格</td>
+</tr>
+<tr>
+<td>单元格</td>
+<td>单元格</td>
+</tr>
+</tbody></table>
+<ul>
+<li>Map和WeakMap 可以用dom作为key, weakmap是弱引用，比Map更适合保存dom节点</li>
+<li>Map的件</li>
+</ul>
+<p>ObjectMapWeakMap键值类型字符串任意类型对象(除了null)同名处理覆盖新开内存，{}会开辟新的内存作为键新开内存，{}会开辟新的内存作为键长度需要Object.values().length.size特殊处理有序性无序有序有序</p>
 <hr>
-<h2 id="Video自定义-播放按钮层级问题"><a href="#Video自定义-播放按钮层级问题" class="headerlink" title="Video自定义 播放按钮层级问题"></a>Video自定义 播放按钮层级问题</h2><p>Q: 播放按钮在部分ios手机上点击播放后会在下层(已设置z-index)<br>A: 给video标签设置position, 此时产生了一个问题，点击播放后，会闪几下(应该是封面和视频的间隙)，解决闪烁可以去掉封面，使用div背景做封面解决<br>Q: 有的ios手机会出现播放按钮(h5无此图标,应该是webview渲染的)<br>A: 监听视频播放状态，视频播放的时候再显示video</p>
-<hr>
-<h2 id="swiper插件-在ios高版本上item内的所有内容无法点击-复现机型-iphone-14-pro-max-17-x"><a href="#swiper插件-在ios高版本上item内的所有内容无法点击-复现机型-iphone-14-pro-max-17-x" class="headerlink" title="swiper插件 在ios高版本上item内的所有内容无法点击(复现机型 iphone 14 pro max 17.x)"></a>swiper插件 在ios高版本上item内的所有内容无法点击(复现机型 iphone 14 pro max 17.x)</h2><p>Q: 使用了swiper轮播插件，在高版本ios上多个swiper-item时，中间的translate3d z轴出现负数,导致层级在下边，整个swiper-item无法点击<br>A: 强制设置z轴为0<br>.swiper-slide{<br>  &amp;.swiper-slide-active{<br>    transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) scale(1) !important;<br>  }<br>}</p>
-<hr>
-<h2 id="h5在iOS点击出现的高亮黑色背景层"><a href="#h5在iOS点击出现的高亮黑色背景层" class="headerlink" title="h5在iOS点击出现的高亮黑色背景层"></a>h5在iOS点击出现的高亮黑色背景层</h2><p>-webkit-tap-highlight-color:transparent;<br>-webkit-tap-highlight-color: rgba(0, 0, 0, 0);<br>tap-highlight-color: rgba(0, 0, 0, 0);</p>
-<hr>
-<h2 id="html内动态引入图片"><a href="#html内动态引入图片" class="headerlink" title="html内动态引入图片"></a>html内动态引入图片</h2><p>backgroundImage: item.gold ? <code>url($&#123;require(</code>..&#x2F;..&#x2F;web-sync&#x2F;img&#x2F;ball&#x2F;${item.gold}.png<code>)&#125;)</code> : ‘’</p>
-<h2 id="swiper自适应高度-降低滑动灵敏度"><a href="#swiper自适应高度-降低滑动灵敏度" class="headerlink" title="swiper自适应高度,降低滑动灵敏度"></a>swiper自适应高度,降低滑动灵敏度</h2><p>:autoHeight&#x3D;”true” &#x2F;&#x2F; 自适应高度<br>:touchRatio&#x3D;”0.2” &#x2F;&#x2F; 降低滑动灵敏度<br>如何把内容加到页码(swiper-pagination)和swiper-slide中间</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const pagination = &#123;</span><br><span class="line">  el: &#x27;.swiper-pagination&#x27;,</span><br><span class="line">  clickable: true,</span><br><span class="line">  renderBullet: function (index, className) &#123;</span><br><span class="line">    return &#x27;&lt;span class=&quot;&#x27; + className + &#x27;&quot;&gt;&lt;/span&gt;&#x27;;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="类似stroke效果-使用shadow"><a href="#类似stroke效果-使用shadow" class="headerlink" title="类似stroke效果,使用shadow"></a>类似stroke效果,使用shadow</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">text-shadow: #FF7E5E 1px 0 0,#FF7E5E 0 1px 0,#FF7E5E -1px 0 0,#FF7E5E 0 -1px 0;</span><br></pre></td></tr></table></figure>
-<h2 id="animation动画抖动"><a href="#animation动画抖动" class="headerlink" title="animation动画抖动"></a>animation动画抖动</h2><p>Q: animation动画(大小会变), 在ios上和相邻定位元素出现层级错乱频闪<br>A: 给父元素设置overflow:hidden;</p>
-<hr>
-<h2 id="css动画函数复用"><a href="#css动画函数复用" class="headerlink" title="css动画函数复用"></a>css动画函数复用</h2><p>Q: 相同动画，不同的结束位置,复用同一个keyframes, </p>
-<p>一个列表，每个元素有transform属性，想透传给@keyframes</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@keyframes fadeInTopRight &#123;</span><br><span class="line">  from &#123;</span><br><span class="line">    opacity: 0;</span><br><span class="line">    transform: translate3d(375px, -1200px, 0);</span><br><span class="line">  &#125;</span><br><span class="line">  to &#123;</span><br><span class="line">    opacity: 1;</span><br><span class="line">    transform:  translate3d(100%, 100%, 0);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>A:</p>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/coco1s/p/17186878.html">https://www.cnblogs.com/coco1s/p/17186878.html</a></p>
-</blockquote>
-<p>将结束动画设置获取变量，但是变量是每个item的变量<br>vue</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;bet-icon</span><br><span class="line">  :num=&quot;k.num&quot;</span><br><span class="line">  v-for=&quot;k in currentBetting[item]&quot;</span><br><span class="line">  :key=&quot;k.id&quot;</span><br><span class="line">  :style=&quot;&#123;</span><br><span class="line">    transform: k.transform,</span><br><span class="line">    animationDuring: k.animationDuring,</span><br><span class="line">    animationDelay: k.animationDelay,</span><br><span class="line">    zIndex: k.zIndex,</span><br><span class="line">    &#x27;--end&#x27;: k.end</span><br><span class="line">  &#125;&quot;</span><br><span class="line">  :class=&quot;&#123;self: k.self&#125;&quot;</span><br><span class="line">  &gt;&lt;/bet-icon&gt;</span><br></pre></td></tr></table></figure>
-<p>css</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@keyframes fadeInTopRight &#123;</span><br><span class="line">  from &#123;</span><br><span class="line">    opacity: 0;</span><br><span class="line">    transform: translate3d(375px, -1200px, 0);</span><br><span class="line">  &#125;</span><br><span class="line">  to &#123;</span><br><span class="line">    opacity: 1;</span><br><span class="line">    transform:  var(--end);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<hr>
+<p>js镜像下getBoundingClientRect获取的值</p>
 
       </section>
 
@@ -203,12 +200,12 @@
             <div class="article-nav-item layout-padding">
   <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
     
-      <div class="card-cover" background-image-lazy data-img="/img/common/t5.jpg"></div>
+      <div class="card-cover" background-image-lazy data-img="/img/common/t2.jpg"></div>
     
     <div class="card-text">
       
-        <a href="/2024/03/22/js-common/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">js常用</h2>
+        <a href="/2024/12/31/hello-world/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">Hello Hexo</h2>
         </a>
       
       <div class="card-text--row">Newer</div>
@@ -220,12 +217,12 @@
             <div class="article-nav-item layout-padding">
   <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
     
-      <div class="card-cover" background-image-lazy data-img="/img/common/t3.jpg"></div>
+      <div class="card-cover" background-image-lazy data-img="/img/common/t4.jpeg"></div>
     
     <div class="card-text">
       
-        <a href="/2024/02/23/vite/" itemprop="url">
-          <h2 class="card-text--title text-ellipsis">vue-cli升级vite</h2>
+        <a href="/2024/03/14/pitfall-diary/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">踩坑记</h2>
         </a>
       
       <div class="card-text--row">Older</div>

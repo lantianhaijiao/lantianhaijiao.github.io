@@ -85,6 +85,11 @@
     </div>
   </div>
 </nav>
+<script type="text/javascript">
+  document.addEventListener("focusUser", event => {
+    console.log("nav收到事件",event);
+  })
+</script>
 
   
   
@@ -94,7 +99,7 @@
     <div class="header-content">
       <div class="post-text layout-block layout-padding">
         <h1 class="title-wrap">归档</h1>
-        <h2 class="title-sub-wrap">共有4篇文章</h2>
+        <h2 class="title-sub-wrap">共有6篇文章</h2>
       </div>
     </div>
   
@@ -114,17 +119,21 @@
 </header>
 <script type="text/javascript">
   var h1 = document.querySelector('.page-title');
-  h1.innerHTML = h1.innerText.replace(/\S/g, "<span>$&</span>");
-  var spanList = [].slice.call(h1.querySelectorAll('span'));
-  console.log('spanList', spanList);
-  spanList.map((span, index) => {
-    span.style.setProperty('--delay', parseInt((index * 0.2 * 100)) / 100 + 's');
-  });
-  var typing = document.querySelector('.typing');
-  const typingHide = document.querySelector('.typing-hide');
-  console.log('w', typingHide.getBoundingClientRect().width);
-  typing.style.setProperty('--typingW', typingHide.getBoundingClientRect().width + 10 + 'px');
-  // typing.style.setProperty('--typingAni', typingHide.getBoundingClientRect().width + 20 + 'px');
+  if (h1) {
+    h1.innerHTML = h1.innerText.replace(/\S/g, "<span>$&</span>");
+    var spanList = [].slice.call(h1.querySelectorAll('span'));
+    spanList.map((span, index) => {
+      span.style.setProperty('--delay', parseInt((index * 0.2 * 100)) / 100 + 's');
+    });
+    h1.addEventListener('click', () => {
+      const focusUser = new Event("focusUser");
+      console.log('click', focusUser);
+      document.dispatchEvent(focusUser);
+    });
+    var typing = document.querySelector('.typing');
+    const typingHide = document.querySelector('.typing-hide');
+    typing.style.setProperty('--typingW', typingHide.getBoundingClientRect().width + 10 + 'px');
+  }
 </script>
 
     <!-- 归档 -->
@@ -136,19 +145,80 @@
       <div class="article-item layout-padding">
         <article class="card-container article-card content-padding--large soft-size--large soft-style--box">
           
+            <div class="card-cover" background-image-lazy data-img="/img/common/t7.jpg"></div>
+          
+
+          <div class="card-text">
+            
+              <a href="/2024/12/31/pag/" itemprop="url">
+                <h2 class="card-text--title">Vs Code之-pag预览拓展</h2>
+              </a>
+            
+            <div class="card-text--row">
+              <span>发布于</span>
+              <time  class="article-date" datetime="2024-12-31T02:16:42.000Z" itemprop="datePublished">2024-12-31</time>
+            </div>
+            
+            <ul class="wrap-list dark">
+  
+    <li><a href="/categories/Vs-Code/">📒 Vs Code</a></li>
+  
+</ul>
+            <ul class="wrap-list dark">
+  
+</ul>
+          </div>
+        </article>
+      </div>
+    
+      <div class="article-item layout-padding">
+        <article class="card-container article-card content-padding--large soft-size--large soft-style--box">
+          
             <div class="card-cover" background-image-lazy data-img="/img/common/t2.jpg"></div>
           
 
           <div class="card-text">
             
-              <a href="/2024/03/19/hello-world/" itemprop="url">
+              <a href="/2024/12/31/hello-world/" itemprop="url">
                 <h2 class="card-text--title">Hello Hexo</h2>
               </a>
             
             <div class="card-text--row">
               <span>发布于</span>
-              <time  class="article-date" datetime="2024-03-19T03:33:54.122Z" itemprop="datePublished">2024-03-19</time>
+              <time  class="article-date" datetime="2024-12-31T01:50:14.865Z" itemprop="datePublished">2024-12-31</time>
             </div>
+            
+            <ul class="wrap-list dark">
+  
+</ul>
+            <ul class="wrap-list dark">
+  
+</ul>
+          </div>
+        </article>
+      </div>
+    
+      <div class="article-item layout-padding">
+        <article class="card-container article-card content-padding--large soft-size--large soft-style--box">
+          
+            <div class="card-cover" background-image-lazy data-img="/img/common/t5.jpg"></div>
+          
+
+          <div class="card-text">
+            
+              <a href="/2024/03/22/js-common/" itemprop="url">
+                <h2 class="card-text--title">js常用</h2>
+              </a>
+            
+            <div class="card-text--row">
+              <span>发布于</span>
+              <time  class="article-date" datetime="2024-03-22T11:16:11.000Z" itemprop="datePublished">2024-03-22</time>
+            </div>
+            
+              <div class="last-time">
+                <span>更新于</span>
+                <time  class="article-updated" datetime="2024-12-31T01:50:14.865Z" itemprop="dateUpdated">2024-12-31</time>
+              </div>
             
             <ul class="wrap-list dark">
   
@@ -179,7 +249,7 @@
             
               <div class="last-time">
                 <span>更新于</span>
-                <time  class="article-updated" datetime="2024-03-19T03:33:54.122Z" itemprop="dateUpdated">2024-03-19</time>
+                <time  class="article-updated" datetime="2024-12-31T01:50:14.865Z" itemprop="dateUpdated">2024-12-31</time>
               </div>
             
             <ul class="wrap-list dark">
@@ -211,7 +281,7 @@
             
               <div class="last-time">
                 <span>更新于</span>
-                <time  class="article-updated" datetime="2024-03-19T03:33:54.122Z" itemprop="dateUpdated">2024-03-19</time>
+                <time  class="article-updated" datetime="2024-12-31T01:50:14.866Z" itemprop="dateUpdated">2024-12-31</time>
               </div>
             
             <ul class="wrap-list dark">
@@ -245,7 +315,7 @@
             
               <div class="last-time">
                 <span>更新于</span>
-                <time  class="article-updated" datetime="2024-03-19T03:33:54.122Z" itemprop="dateUpdated">2024-03-19</time>
+                <time  class="article-updated" datetime="2024-12-31T02:42:17.066Z" itemprop="dateUpdated">2024-12-31</time>
               </div>
             
             <ul class="wrap-list dark">

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#3367D6"/>
+  <link rel="apple-touch-icon" href="/icons-192.png">
+  <link rel="manifest" href="/manifest.json">
+  
+  <meta name="generator" content="Hexo 7.1.1">
+
+  
+
+  
+    <meta name="keywords" content="Blog">
+  
+
+  
+    <meta name="author" content="lantianhaijiao">
+  
+
+  
+
+  
+
+  <title>Vs Code之-pag预览拓展 | 蓝天海礁</title>
+
+  
+
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+
+  <!--mathjax latex数学公式显示支持-->
+  
+  
+
+  
+
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+  <div class="root-container">
+    
+<!-- header container -->
+<header class="header-container post">
+  
+    <div class="post-image" style="background-image: url(/img/common/t7.jpg)"></div>
+  
+
+  <!-- navbar -->
+<nav class="navbar">
+  <div class="navbar-content">
+    <!-- logo -->
+    <div class="navbar-logo">
+      <a href="/">
+        
+          蓝天海礁
+        
+      </a>
+    </div>
+    <!-- link -->
+    <div class="navbar-link">
+      <div class="navbar-btn">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <ul class="navbar-list">
+        
+          <li class="navbar-list-item"><a href="/">首页</a></li>
+        
+          <li class="navbar-list-item"><a target="_blank" rel="noopener" href="https://segmentfault.com/u/lantianhaijiao">思否</a></li>
+        
+          <li class="navbar-list-item"><a href="/about">关于</a></li>
+        
+          <li class="navbar-list-item"><a href="/docs">文档</a></li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+<script type="text/javascript">
+  document.addEventListener("focusUser", event => {
+    console.log("nav收到事件",event);
+  })
+</script>
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+  
+  
+    <div class="header-content">
+      <div class="post-text layout-block">
+        <div class="layout-margin">
+          <h1 class="title-wrap">Vs Code之-pag预览拓展</h1>
+          <h2 class="title-sub-wrap">
+            <strong>lantianhaijiao</strong>
+            <span>发布于</span>
+            <time  class="article-date" datetime="2024-12-31T02:16:42.000Z" itemprop="datePublished">2024-12-31</time>
+          </h2>
+          
+          
+          <ul class="wrap-list dark">
+  
+    <li><a href="/categories/Vs-Code/">📒 Vs Code</a></li>
+  
+</ul>
+          <ul class="wrap-list dark">
+  
+</ul>
+        </div>
+      </div>
+    </div>
+  
+
+  
+  
+  
+</header>
+<script type="text/javascript">
+  var h1 = document.querySelector('.page-title');
+  if (h1) {
+    h1.innerHTML = h1.innerText.replace(/\S/g, "<span>$&</span>");
+    var spanList = [].slice.call(h1.querySelectorAll('span'));
+    spanList.map((span, index) => {
+      span.style.setProperty('--delay', parseInt((index * 0.2 * 100)) / 100 + 's');
+    });
+    h1.addEventListener('click', () => {
+      const focusUser = new Event("focusUser");
+      console.log('click', focusUser);
+      document.dispatchEvent(focusUser);
+    });
+    var typing = document.querySelector('.typing');
+    const typingHide = document.querySelector('.typing-hide');
+    typing.style.setProperty('--typingW', typingHide.getBoundingClientRect().width + 10 + 'px');
+  }
+</script>
+
+    <!-- 文章 -->
+
+<!-- 文章内容 -->
+<div class="body-container">
+  <article class="content-container layout-block post-container">
+    <div class="article-info">
+      
+      
+      
+      
+      <section class="article-entry markdown-body layout-margin content-padding--large soft-size--large soft-style--box">
+        <h1 id="开发流程"><a href="#开发流程" class="headerlink" title="开发流程"></a>开发流程</h1><h2 id="vscode拓展是什么？都能够做什么？"><a href="#vscode拓展是什么？都能够做什么？" class="headerlink" title="vscode拓展是什么？都能够做什么？"></a>vscode拓展是什么？都能够做什么？</h2><p>vscode拓展是可以拓展VS Code编辑器功能、丰富编辑器用途的插件，能够提供编程效率，提升代码阅读体验，增强文本编辑功能<br>比如copilot、prettier、image preview、Git History、Code Runner等等</p>
+<h2 id="拓展如何下载-使用？"><a href="#拓展如何下载-使用？" class="headerlink" title="拓展如何下载&#x2F;使用？"></a>拓展如何下载&#x2F;使用？</h2><ol>
+<li>通过Vs Code插件商店下载安装<blockquote>
+<p><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/">https://marketplace.visualstudio.com</a></p>
+</blockquote>
+</li>
+<li>本地导入.vsix文件安装<br><img src="/img/pag/image-1.png" alt="alt text"></li>
+</ol>
+<h2 id="pag动画文件预览商店地址"><a href="#pag动画文件预览商店地址" class="headerlink" title=".pag动画文件预览商店地址"></a>.pag动画文件预览商店地址</h2><blockquote>
+<p><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=lantianhaijiao.pag-preview&ssr=false#review-details">https://marketplace.visualstudio.com/items?itemName=lantianhaijiao.pag-preview&amp;ssr=false#review-details</a></p>
+</blockquote>
+<h2 id="下面进行详细的开发流程介绍，流程大致分为如下几个步骤"><a href="#下面进行详细的开发流程介绍，流程大致分为如下几个步骤" class="headerlink" title="下面进行详细的开发流程介绍，流程大致分为如下几个步骤"></a>下面进行详细的开发流程介绍，流程大致分为如下几个步骤</h2><ul>
+<li>配置开发环境</li>
+<li>调试</li>
+<li>package.json配置说明</li>
+<li>快捷键配置</li>
+<li>打包&#x2F;发布</li>
+</ul>
+<h3 id="配置开发环境"><a href="#配置开发环境" class="headerlink" title="配置开发环境"></a>配置开发环境</h3><ul>
+<li>安装脚手架yeoman<blockquote>
+<p><a target="_blank" rel="noopener" href="https://code.visualstudio.com/api/get-started/your-first-extension">https://code.visualstudio.com/api/get-started/your-first-extension</a></p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">npm install -g yo</span><br><span class="line">npm install -g generator-code</span><br><span class="line">// 初始化项目</span><br><span class="line">yo code</span><br><span class="line">// yo模块全局安装后就安装了Yeoman，Yeoman是通用型项目脚手架工具，可以根据一套模板，生成一个对应的项目结构</span><br><span class="line">// generator-code模块是VS Code扩展生成器，与yo配合使用才能构建项目。</span><br><span class="line">提示如下</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/pag/image-2.png" alt="alt text"><br>官方工具初始化完成后，直接调试，理论上就能看到效果了</p>
+<h3 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h3><p>先编译</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run compile</span><br></pre></td></tr></table></figure>
+<p>编译完新的窗口需要 reload<br>调试的时候用这个甲壳虫，不要右键run code<br><img src="/img/pag/image-3.png" alt="alt text"><br>会弹出一个新的窗口，新窗口直接执行 cmd+shift+p选择命令(自己注册的命令)就会出现效果<br>或者使用注册的快捷键</p>
+<h3 id="package-json配置说明"><a href="#package-json配置说明" class="headerlink" title="package.json配置说明"></a>package.json配置说明</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">name: 项目名 </span><br><span class="line">displayName: 插件名 </span><br><span class="line">description: 插件描述 </span><br><span class="line">version: 版本号 </span><br><span class="line">keywords</span><br><span class="line">publisher: 发布者id </span><br><span class="line">author: 作者 </span><br><span class="line">engines&gt;vscode: vscode版本 </span><br><span class="line">categories: 类别 </span><br><span class="line">activationEvents: 扩展的激活事件 </span><br><span class="line">main: 主入口 </span><br><span class="line">contributes&gt;commands: 配置命令 </span><br><span class="line">contributes&gt;keybindings: 配置快捷键</span><br><span class="line">contributes&gt;commands: 配置命令</span><br><span class="line">contributes&gt;menus: 菜单配置</span><br><span class="line">contributes&gt;customEditors: 创建和注册自定义编辑器</span><br><span class="line">keywords: 配置关键词--这个也挺重要，搜索的时候要用</span><br></pre></td></tr></table></figure>
+<h3 id="快捷键配置"><a href="#快捷键配置" class="headerlink" title="快捷键配置"></a>快捷键配置</h3><p><img src="/img/pag/image-4.png" alt="alt text"><br>接受的密钥<br><img src="/img/pag/image-5.png" alt="alt text"></p>
+<h3 id="打包-发布"><a href="#打包-发布" class="headerlink" title="打包&#x2F;发布"></a>打包&#x2F;发布</h3><ul>
+<li>安装vsce<br>npm i vsce -g</li>
+<li>打包成vsix文件<br>vsce package</li>
+<li>发布&#x2F;审核页面<br>vsce login  xxx<br>vsce publish<br>发布分两种，一种是本地直接发布，另一种是商店网站发布<br><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/">https://marketplace.visualstudio.com/</a><br>发布后，在商店页面会显示审核&#x2F;结果状态<br><img src="/img/pag/image-6.png" alt="alt text"></li>
+</ul>
+<h2 id="pag文件预览"><a href="#pag文件预览" class="headerlink" title="pag文件预览"></a>pag文件预览</h2><p>实现方案因人而异，本拓展在制作中想到了拓展+webview方式来实现，使用webview一来相对熟悉，二来自由度比较高<br>目录结构<br><img src="/img/pag/image-7.png" alt="alt text"></p>
+<ul>
+<li>PAG-PREVIEW<ul>
+<li>dist                打包后的目录</li>
+<li>src                 开发目录<ul>
+<li>plugins         插件目录</li>
+<li>wbeview         webview相关(自定义)</li>
+<li>extension.ts    主入口</li>
+</ul>
+</li>
+<li>gitignore</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>识别打开的是.pag结尾的文件格式</li>
+<li>处理文件，输出给webview可访问的文件路径&#x2F;buffer</li>
+<li>使用webview对文件处理，使用libpag库来解析pag进行播放</li>
+</ol>
+<h3 id="识别vscode打开了-pag结尾的文件"><a href="#识别vscode打开了-pag结尾的文件" class="headerlink" title="识别vscode打开了.pag结尾的文件"></a>识别vscode打开了.pag结尾的文件</h3><p>在extension.ts文件中导入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import PagPreview from &#x27;./plugins/pag-preview&#x27;;</span><br><span class="line">export function activate(context: vscode.ExtensionContext) &#123;</span><br><span class="line">  fileSizeStatusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);</span><br><span class="line">  context.subscriptions.push(PagPreview(context));</span><br><span class="line">  context.subscriptions.push(FileSize(context, fileSizeStatusBarItem));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="处理文件，输出给webview"><a href="#处理文件，输出给webview" class="headerlink" title="处理文件，输出给webview"></a>处理文件，输出给webview</h3><p>在plugins目录下创建pag-preview.ts处理具体逻辑</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line">import * as vscode from &quot;vscode&quot;;</span><br><span class="line">const path = require(&quot;path&quot;);</span><br><span class="line">const fs = require(&quot;fs&quot;);</span><br><span class="line">class PagCustomDocument implements vscode.CustomDocument &#123;</span><br><span class="line">  uri: vscode.Uri;</span><br><span class="line"></span><br><span class="line">  constructor(uri: vscode.Uri) &#123;</span><br><span class="line">    this.uri = uri;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  dispose(): void &#123;</span><br><span class="line">    // 如果需要清理资源，可以在这里实现</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class PagCustomEditorProvider</span><br><span class="line">  implements vscode.CustomReadonlyEditorProvider&lt;PagCustomDocument&gt;</span><br><span class="line">&#123;</span><br><span class="line">  public static readonly viewType = &quot;pagViewer.editor&quot;;</span><br><span class="line"></span><br><span class="line">  constructor(private readonly context: vscode.ExtensionContext) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  /**</span><br><span class="line">   * openCustomDocument 方法，用于打开自定义文档</span><br><span class="line">   */</span><br><span class="line">  public openCustomDocument(</span><br><span class="line">    uri: vscode.Uri,</span><br><span class="line">    _openContext: vscode.CustomDocumentOpenContext,</span><br><span class="line">    _token: vscode.CancellationToken</span><br><span class="line">  ): vscode.CustomDocument | Thenable&lt;vscode.CustomDocument&gt; &#123;</span><br><span class="line">    // 创建并返回自定义文档实例</span><br><span class="line">    return new PagCustomDocument(uri);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  /**</span><br><span class="line">   * resolveCustomEditor 方法，在文件被打开时触发</span><br><span class="line">   */</span><br><span class="line">  public async resolveCustomEditor(</span><br><span class="line">    document: PagCustomDocument,</span><br><span class="line">    webviewPanel: vscode.WebviewPanel,</span><br><span class="line">    _token: vscode.CancellationToken</span><br><span class="line">  ): Promise&lt;void&gt; &#123;</span><br><span class="line">    console.log(`Opening file: $&#123;document.uri.fsPath&#125;`);</span><br><span class="line">    // vscode指令通信</span><br><span class="line">    vscode.commands.executeCommand(&quot;pagViewer.fileDetail&quot;, document.uri);</span><br><span class="line">    // 设置 Webview 选项</span><br><span class="line">    webviewPanel.webview.options = &#123;</span><br><span class="line">      enableScripts: true,</span><br><span class="line">      // localResourceRoots作用：防止 WebView 意外访问到插件不该访问的本地文件系统区域。只有处在 localResourceRoots 所列出的目录中的资源，才可以被 WebView 加载，这有助于保障用户系统的安全，避免恶意代码利用 WebView 越界访问敏感文件</span><br><span class="line">      localResourceRoots: [</span><br><span class="line">        vscode.Uri.file(path.join(this.context.extensionPath, &quot;dist&quot;)),</span><br><span class="line">        vscode.Uri.file(path.dirname(document.uri.fsPath)),</span><br><span class="line">      ],</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    // 关键：将文件 URI 转为 Webview 可访问的路径</span><br><span class="line">    const fileUri = webviewPanel.webview.asWebviewUri(document.uri);</span><br><span class="line">    // console.log(&quot;uri--&quot;, fileUri.toString()); https://file%2B.vscode-resource.vscode-cdn.net/Users/xxx/vscode/pag-preview/dist/webview/pag.min.js</span><br><span class="line">    const htmlPath = path.join(</span><br><span class="line">      this.context.extensionPath,</span><br><span class="line">      &quot;dist/webview/pag.html&quot;</span><br><span class="line">    );</span><br><span class="line">    // console.log(&quot;htmlPath&quot;, htmlPath);</span><br><span class="line">    // 解析html内容</span><br><span class="line">    const htmlContent = fs.readFileSync(htmlPath, &quot;utf-8&quot;);</span><br><span class="line">    const fastDiffUri = webviewPanel.webview.asWebviewUri(</span><br><span class="line">      vscode.Uri.file(</span><br><span class="line">        path.join(this.context.extensionPath, &quot;dist/webview/pag.min.js&quot;)</span><br><span class="line">      )</span><br><span class="line">    );</span><br><span class="line">    const updatedHtmlContent = htmlContent.replace(&quot;./pag.min.js&quot;, fastDiffUri);</span><br><span class="line">    // 设置 Webview 内容</span><br><span class="line">    webviewPanel.webview.html = updatedHtmlContent;</span><br><span class="line">    // 将文件内容发送到 Webview</span><br><span class="line">    webviewPanel.webview.postMessage(&#123;</span><br><span class="line">      type: &quot;loadFile&quot;,</span><br><span class="line">      fileUri: fileUri.toString(),</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    // 监听来自 Webview 的消息</span><br><span class="line">    webviewPanel.webview.onDidReceiveMessage((message) =&gt; &#123;</span><br><span class="line">      if (message.command === &quot;alert&quot;) &#123;</span><br><span class="line">        vscode.window.showInformationMessage(message.text);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    // 处理自定义编辑器生命周期</span><br><span class="line">    webviewPanel.onDidDispose(() =&gt; &#123;</span><br><span class="line">      console.log(&#x27;pag文件关闭&#x27;);</span><br><span class="line">      vscode.commands.executeCommand(&quot;pagViewer.fileDetail&quot;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">export default (context: vscode.ExtensionContext) =&gt; &#123;</span><br><span class="line">  console.log(&quot;PAG Custom Editor Activated!&quot;);</span><br><span class="line"></span><br><span class="line">  let disposable = vscode.window.registerCustomEditorProvider(</span><br><span class="line">    PagCustomEditorProvider.viewType,</span><br><span class="line">    new PagCustomEditorProvider(context),</span><br><span class="line">    &#123;</span><br><span class="line">      webviewOptions: &#123;</span><br><span class="line">        retainContextWhenHidden: false, // 切换标签时保留上下文</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">  );</span><br><span class="line">  return disposable;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="使用webview对文件处理进行播放"><a href="#使用webview对文件处理进行播放" class="headerlink" title="使用webview对文件处理进行播放"></a>使用webview对文件处理进行播放</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;pag-player&quot;&gt;</span><br><span class="line">  &lt;button onclick=&quot;playToggle()&quot; class=&quot;pag-play&quot;&gt;pause&lt;/button&gt;</span><br><span class="line">  &lt;canvas class=&quot;pag-canvas&quot;&gt;&lt;/canvas&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">// 监听来自扩展的消息</span><br><span class="line">  window.addEventListener(&#x27;message&#x27;, (event) =&gt; &#123;</span><br><span class="line">    const message = event.data;</span><br><span class="line">    if (message.type === &#x27;loadFile&#x27;) &#123;</span><br><span class="line">      initPag(message.fileUri).catch((err) =&gt; &#123;</span><br><span class="line">        console.log(&#x27;onError&#x27;, err)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  // 这一步根据需要进行解析,这里使用了libpag.min.js，自执行模式</span><br><span class="line">  const PAGView = libpag.PAGView;</span><br><span class="line">  const types = libpag.types;</span><br><span class="line">  const pagCanvasEl = document.querySelector(&#x27;.pag-canvas&#x27;);</span><br><span class="line">  let pagView = null;</span><br><span class="line">  const renderingMode = types.RenderingMode.WebGL;</span><br><span class="line">  const loadPag = async (url) =&gt; &#123;</span><br><span class="line">    let arrayBuffer;</span><br><span class="line">    try &#123;</span><br><span class="line">      const response = await fetch(url);</span><br><span class="line">      if (!response.ok) &#123;</span><br><span class="line">        throw new Error(`HTTP error! Status: $&#123;response.status&#125;`);</span><br><span class="line">      &#125;</span><br><span class="line">      arrayBuffer = await response.arrayBuffer();</span><br><span class="line">    &#125; catch (error) &#123;</span><br><span class="line">      console.error(&quot;Failed to fetch resource as ArrayBuffer:&quot;, error);</span><br><span class="line">    &#125;</span><br><span class="line">    return Promise.resolve(arrayBuffer)</span><br><span class="line">  &#125;</span><br><span class="line">  const initPag = async (src) =&gt; &#123;</span><br><span class="line">    const pagBuffer = await loadPag(src).catch(err =&gt; console.warn(err))</span><br><span class="line">    if (!pagBuffer) &#123;</span><br><span class="line">      console.log(&#x27;onError&#x27;)</span><br><span class="line">      return</span><br><span class="line">    &#125;</span><br><span class="line">    pagView = PAGView.init(pagBuffer, pagCanvasEl, &#123;</span><br><span class="line">      renderingMode: renderingMode == &#x27;webgl&#x27; ? types.RenderingMode.WebGL : types.RenderingMode.Canvas2D,</span><br><span class="line">      useScale: true</span><br><span class="line">    &#125;);</span><br><span class="line">    pagView.setRepeatCount(0);</span><br><span class="line">    await pagView.play();</span><br><span class="line">  &#125;</span><br><span class="line">  function play ()&#123; pagView.play()&#125;;</span><br><span class="line">  function pause ()&#123; pagView.pause()&#125;;</span><br><span class="line">  const pagPlayer = document.querySelector(&#x27;.pag-player&#x27;);</span><br><span class="line">  const colors = &#123;</span><br><span class="line">    1: &#x27;#000&#x27;,</span><br><span class="line">    2: &#x27;#FFF&#x27;,</span><br><span class="line">    3: &#x27;#00bcd3&#x27;</span><br><span class="line">  &#125;;</span><br><span class="line">  let playStatus = true;</span><br><span class="line">  const playRef = document.querySelector(&#x27;.pag-play&#x27;);</span><br><span class="line">  function playToggle () &#123;</span><br><span class="line">    if (playStatus) &#123;</span><br><span class="line">      pause();</span><br><span class="line">      playRef.innerText = &#x27;play&#x27;;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      play();</span><br><span class="line">      playRef.innerText = &#x27;pause&#x27;;</span><br><span class="line">    &#125;</span><br><span class="line">    playStatus = !playStatus;</span><br><span class="line">  &#125;</span><br><span class="line">  function changeBg (type) &#123;</span><br><span class="line">    pagPlayer.style.backgroundColor = colors[type];</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p> VS Code 扩展具备多重实用功能：一方面，它显著提升编程效率，例如借助智能补全、代码片段等特性，让代码编写更为流畅迅速，更加专注在编辑器内部<br>另一方面，VS Code 拓展各个功能模块界限清晰，相互协作又互不干扰。在 Vue 3 开发里，同样强调组件化，将页面拆分成一个个独立的组件，每个组件管理自己的状态、逻辑与视图，就像拓展中的一个个独立功能模块。这样做便于代码复用，开发某个功能组件时，能快速定位、修改，无需在大量代码中 “大海捞针”，提升开发效率与可维护性</p>
+
+      </section>
+
+      
+      
+        <nav class="article-nav">
+          
+          
+            <div class="article-nav-item layout-padding">
+  <article class="card-container article-nav-card content-padding--primary soft-size--large soft-style--box">
+    
+      <div class="card-cover" background-image-lazy data-img="/img/common/t2.jpg"></div>
+    
+    <div class="card-text">
+      
+        <a href="/2024/12/31/hello-world/" itemprop="url">
+          <h2 class="card-text--title text-ellipsis">Hello Hexo</h2>
+        </a>
+      
+      <div class="card-text--row">Older</div>
+    </div>
+  </article>
+</div>
+          
+        </nav>
+      
+
+      <section class="page-message-container layout-padding">
+        
+
+
+  
+  
+
+  
+  
+
+
+      </section>
+    </div>
+    <div class="widget-info">
+      <!--
+ * @Author: haobin.wang
+ * @Date: 2024-02-08 10:22:44
+ * @LastEditors: haobin.wang
+ * @LastEditTime: 2024-03-19 15:34:08
+ * @Description: Do not edit
+-->
+<section class="widget-author widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-body">
+    
+      <img src="/img/avatar.png" class="soft-size--round soft-style--box personal-avatar" alt="蓝天海礁">
+    
+    
+      <h2>蓝天海礁</h2>
+    
+    
+      <p>wonderful</p>
+    
+
+    <div class="count-box">
+      <div class="count-box--item">
+        <svg class="icon icon-article" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M240.51564747 647.74217627h196.07203239c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806V165.10332731c0-33.18142087-30.16492806-60.32985613-60.32985612-60.32985611H245.04038668C225.43318342 104.7734712 210.35071939 119.85593522 210.35071939 139.46313845V617.57724821c0 16.59071043 13.57421762 30.16492806 30.16492808 30.16492806z m663.62841731-452.47392089v482.63884894c0 33.18142087-27.14843525 60.32985613-60.32985612 60.32985613H180.18579134c-33.18142087 0-60.32985613-27.14843525-60.32985612-60.32985613V195.26825538c-49.77213131 0-90.49478418 40.72265287-90.49478417 90.49478417v452.4739209c0 49.77213131 40.72265287 90.49478418 90.49478417 90.49478417h286.56681657c16.59071043 0 30.16492806 13.57421762 30.16492807 30.16492807s13.57421762 30.16492806 30.16492805 30.16492806h90.49478418c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806s13.57421762-30.16492806 30.16492807-30.16492807h286.56681657c49.77213131 0 90.49478418-40.72265287 90.49478417-90.49478417V285.76303955c0-49.77213131-40.72265287-90.49478418-90.49478417-90.49478417zM587.41232014 647.74217627h191.54729318c19.60720323 0 34.68966726-15.08246403 34.68966729-34.68966727V134.93839925c0-16.59071043-13.57421762-30.16492806-30.16492808-30.16492805H617.57724821c-30.16492806 0-60.32985613 27.14843525-60.32985612 60.32985611v452.4739209c0 16.59071043 13.57421762 30.16492806 30.16492805 30.16492806z" fill="currentColor"></path>
+</svg>
+        <span>6</span>
+      </div>
+      <div class="count-box--item">
+        <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
+</svg>
+        3
+      </div>
+      <div class="count-box--item">
+        <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
+</svg>
+        0
+      </div>
+    </div>
+  </div>
+</section>
+<script src="/js/util.js"></script>
+<script>
+  const avatar = document.querySelector('.personal-avatar');
+  const dbClickHandle = dbClick(function () {
+    // console.log('click', avatar.className);
+    if (avatar.className.indexOf('shake') == -1) {
+      avatar.classList.add('shake');
+    }
+  });
+  avatar.addEventListener('animationend', () => {
+    avatar.classList.remove('shake');
+  });
+  document.querySelector('.personal-avatar').addEventListener('click', dbClickHandle);
+</script>
+
+      
+
+      
+<section class="widet-notice widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-notice" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M512 945.02305225v28.15620663a24.27259221 24.27259221 0 0 1-24.27259221 24.27259335H394.0352a48.54518557 48.54518557 0 0 1-41.74885888-23.78714112l-110.68302222-184.47170332a132.04290333 132.04290333 0 0 1-17.47626667-48.54518557h118.4502511a200.97706667 200.97706667 0 0 1 76.21594113 14.56355556l20.38897777 133.49925888a48.54518557 48.54518557 0 0 0 36.40888888 27.67075555l16.01991111 2.91271112a24.27259221 24.27259221 0 0 1 20.38897778 25.72894889zM997.45185223 463.45481443a194.18074112 194.18074112 0 0 1-38.8361489 116.50844445 24.75804445 24.75804445 0 0 1-36.4088889 0l-34.95253333-34.95253333a24.27259221 24.27259221 0 0 1-2.91271111-30.58346667 97.09036999 97.09036999 0 0 0 0-106.79940665 24.27259221 24.27259221 0 0 1 2.91271111-30.58346666l34.95253333-34.95253334a24.75804445 24.75804445 0 0 1 18.93262223-7.28177777 26.2144 26.2144 0 0 1 17.47626667 9.70903665A194.18074112 194.18074112 0 0 1 997.45185223 463.45481443z m-194.18074112-388.36148111v776.72296335a48.54518557 48.54518557 0 0 1-48.54518556 48.54518443h-28.64165888a48.54518557 48.54518557 0 0 1-33.98163001-14.07810332l-145.63555556-143.20829668A291.27111111 291.27111111 0 0 0 342.57730333 657.63555556H172.18370333a145.63555556 145.63555556 0 0 1-145.63555556-145.63555556v-97.09036999a145.63555556 145.63555556 0 0 1 145.63555556-145.63555556h170.3936a291.27111111 291.27111111 0 0 0 206.31703779-85.43952668l145.63555555-143.20829554a48.54518557 48.54518557 0 0 1 33.98162888-14.07810446H754.72592555a48.54518557 48.54518557 0 0 1 48.54518556 48.54518555z" fill="currentColor"></path>
+</svg>
+    <span>NOTICE</span>
+  </div>
+  <div class="widget-body">
+    <p>做个有趣的人</p>
+  </div>
+</section>
+
+
+      <section class="widget-categorys widget-item layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
+</svg>
+    <span>CATEGORYS</span>
+  </div>
+  <div class="widget-body">
+    <ul class="categorys-list">
+      
+        <li class="categorys-list-item">
+          <a href="/categories/Vs-Code/">
+            Vs Code (1)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
+          <a href="/categories/js/">
+            js (1)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
+          <a href="/categories/%E8%84%9A%E6%89%8B%E6%9E%B6/">
+            脚手架 (1)
+          </a>
+        </li>
+      
+    </ul>
+  </div>
+</section>
+
+      <section class="widget-tags widget-item  layout-margin content-padding--primary soft-size--large soft-style--box">
+  <div class="widget-title">
+    <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M283.42180005 272q0-28.38857157-20.09142843-48.48000001t-48.47999998-20.09142842-48.48000002 20.09142842-20.09142846 48.48000001 20.09142846 48.48 48.48000002 20.09142843 48.47999998-20.09142843 20.09142843-48.48zM855.0332285 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.03999997 263.58857157q-20.9142853 19.81714313-48.75428534 19.81714312-28.38857157 0-48.20571468-19.81714312l-383.04-383.58857157q-20.36571468-19.81714313-34.55999999-54.10285688t-14.19428534-62.6742853l0-222.85714313q0-27.84000002 20.36571469-48.20571469t48.2057147-20.36571466l222.85714313 0q28.38857157 0 62.6742853 14.19428529t54.65142842 34.55999999l383.04000001 382.49142843q19.81714313 20.9142853 19.81714314 48.75428532zM1060.74751475 580.57142843q0 28.38857157-19.81714313 48.2057147l-263.04 263.58857157q-20.9142853 19.81714313-48.75428531 19.81714312-19.26857155 0-31.61142843-7.47428531t-28.38857159-24.13714314l251.79428534-251.7942853q19.81714313-19.81714313 19.81714308-48.20571469 0-27.84000002-19.81714308-48.75428531l-383.04000001-382.49142845q-20.36571468-20.36571468-54.65142842-34.55999999t-62.67428532-14.19428534l120 0q28.38857157 0 62.67428532 14.19428534t54.65142842 34.55999999l383.03999998 382.49142845q19.81714313 20.9142853 19.81714314 48.75428531z" fill="currentColor"></path>
+</svg>
+    <span>TAGS</span>
+  </div>
+  <div class="widget-body">
+    <div class="tags-cloud">
+      
+    </div>
+  </div>
+</section>
+    </div>
+  </article>
+</div>
+
+    <!-- footer container -->
+<footer id="footer" class="footer">
+  <div class="footer-container">
+    
+    <div class="social-icons">
+      
+        
+      
+        
+      
+        
+      
+        
+          <a href="https://github.com/lantianhaijiao" class="soft-size--primary soft-style--box" target="_blank" rel="noopener noreferrer">
+            <svg class="icon icon-github" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <path d="M64.6 512c0 195.6 125.4 361.9 300.1 422.9 23.5 5.9 19.9-10.8 19.9-22.2v-77.6c-135.8 15.9-141.3-74-150.5-89-18.5-31.5-61.9-39.5-49-54.5 31-15.9 62.5 4 98.9 58 26.4 39.1 77.9 32.5 104.1 26 5.7-23.5 17.9-44.5 34.7-60.9-140.7-25.2-199.4-111.1-199.4-213.3 0-49.5 16.4-95.1 48.4-131.8-20.4-60.6 1.9-112.4 4.9-120.1 58.2-5.2 118.5 41.6 123.3 45.3 33.1-8.9 70.8-13.7 112.9-13.7 42.4 0 80.3 4.9 113.5 13.9 11.3-8.6 67.3-48.8 121.4-43.9 2.9 7.7 24.7 58.3 5.5 118.1 32.5 36.8 49 82.8 49 132.4 0 102.3-59 188.3-200.2 213.2 23.5 23.3 38.1 55.5 38.1 91.1v112.7c0.8 9 0 17.9 15.1 17.9C832.7 877 960.4 709.4 960.4 512.1c0-247.5-200.6-447.9-447.9-447.9C265 64.1 64.6 264.5 64.6 512z"></path>
+</svg>
+          </a>
+        
+      
+    </div>
+     
+    <p>&copy; 2024 <a href="/" target="_blank">lantianhaijiao</a></p>
+
+    
+
+    <p>Powered by <a href="https://hexo.io" target="_blank" rel="noopener noreferrer">Hexo</a> Theme - <a href="https://github.com/miiiku/flex-block" target="_blank" rel="noopener noreferrer author">flex-block</a></p>
+
+    <p>
+      <a href="javascript:;" id="theme-light">🌞 浅色</a>
+      <a href="javascript:;" id="theme-dark">🌛 深色</a>
+      <a href="javascript:;" id="theme-auto">🤖️ 自动</a>
+    </p>
+  </div>
+</footer>
+  </div>
+
+  <div class="back-to-top-fixed soft-size--round soft-style--box">
+    <svg class="icon icon-back-to-top" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <path d="M725.333333 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8l-213.333333-213.333333c-17.066667-17.066667-17.066667-42.666667 0-59.733333s42.666667-17.066667 59.733333 0l213.333333 213.333333c17.066667 17.066667 17.066667 42.666667 0 59.733333C746.666667 422.4 738.133333 426.666667 725.333333 426.666667z"></path>
+      <path d="M298.666667 426.666667c-12.8 0-21.333333-4.266667-29.866667-12.8-17.066667-17.066667-17.066667-42.666667 0-59.733333l213.333333-213.333333c17.066667-17.066667 42.666667-17.066667 59.733333 0s17.066667 42.666667 0 59.733333l-213.333333 213.333333C320 422.4 311.466667 426.666667 298.666667 426.666667z"></path>
+      <path d="M512 896c-25.6 0-42.666667-17.066667-42.666667-42.666667L469.333333 170.666667c0-25.6 17.066667-42.666667 42.666667-42.666667s42.666667 17.066667 42.666667 42.666667l0 682.666667C554.666667 878.933333 537.6 896 512 896z"></path>
+    </svg>
+  </div>
+
+  
+  <!-- aplayer -->
+
+
+<!-- dplayer -->
+
+
+<!-- copy button  -->
+<script src="/js/clipboard.min.js" defer></script>
+
+<!-- https://clipboardjs.com/ -->
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+  
+  <!-- 尾部用户自定义相关内容 -->
+</body>
+</html>

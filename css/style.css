@@ -660,6 +660,7 @@ html.show-mobile-nav .navbar-list {
   overflow: hidden;
   margin: 0 auto;
   display: inline-block;
+  text-shadow: rgba(0,0,0,0.5) 1px 0 0, rgba(0,0,0,0.5) 0 1px 0, rgba(0,0,0,0.5) -1px 0 0, rgba(0,0,0,0.5) 0 -1px 0;
 }
 @-moz-keyframes jump {
   0%, 20% {

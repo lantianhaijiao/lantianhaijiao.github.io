@@ -85,6 +85,11 @@
     </div>
   </div>
 </nav>
+<script type="text/javascript">
+  document.addEventListener("focusUser", event => {
+    console.log("nav收到事件",event);
+  })
+</script>
 
   
   
@@ -112,7 +117,7 @@
           
             <h2 class="last-time">
               <span>最后更新于</span>
-              <time  class="article-updated" datetime="2024-03-19T03:33:54.122Z" itemprop="dateUpdated">2024-03-19</time>
+              <time  class="article-updated" datetime="2024-12-31T01:50:14.866Z" itemprop="dateUpdated">2024-12-31</time>
             </h2>
           
           
@@ -135,17 +140,21 @@
 </header>
 <script type="text/javascript">
   var h1 = document.querySelector('.page-title');
-  h1.innerHTML = h1.innerText.replace(/\S/g, "<span>$&</span>");
-  var spanList = [].slice.call(h1.querySelectorAll('span'));
-  console.log('spanList', spanList);
-  spanList.map((span, index) => {
-    span.style.setProperty('--delay', parseInt((index * 0.2 * 100)) / 100 + 's');
-  });
-  var typing = document.querySelector('.typing');
-  const typingHide = document.querySelector('.typing-hide');
-  console.log('w', typingHide.getBoundingClientRect().width);
-  typing.style.setProperty('--typingW', typingHide.getBoundingClientRect().width + 10 + 'px');
-  // typing.style.setProperty('--typingAni', typingHide.getBoundingClientRect().width + 20 + 'px');
+  if (h1) {
+    h1.innerHTML = h1.innerText.replace(/\S/g, "<span>$&</span>");
+    var spanList = [].slice.call(h1.querySelectorAll('span'));
+    spanList.map((span, index) => {
+      span.style.setProperty('--delay', parseInt((index * 0.2 * 100)) / 100 + 's');
+    });
+    h1.addEventListener('click', () => {
+      const focusUser = new Event("focusUser");
+      console.log('click', focusUser);
+      document.dispatchEvent(focusUser);
+    });
+    var typing = document.querySelector('.typing');
+    const typingHide = document.querySelector('.typing-hide');
+    typing.style.setProperty('--typingW', typingHide.getBoundingClientRect().width + 10 + 'px');
+  }
 </script>
 
     <!-- 文章 -->
@@ -162,7 +171,7 @@
         <h1 id="vue升级2-7-关联vite升级"><a href="#vue升级2-7-关联vite升级" class="headerlink" title="vue升级2.7,关联vite升级"></a>vue升级2.7,关联vite升级</h1><blockquote>
 <p><a target="_blank" rel="noopener" href="https://v2.cn.vuejs.org/v2/guide/migration-vue-2-7.html">https://v2.cn.vuejs.org/v2/guide/migration-vue-2-7.html</a></p>
 </blockquote>
-<p><a href="mailto:&#118;&#117;&#x65;&#45;&#x74;&#101;&#109;&#x70;&#x6c;&#97;&#116;&#x65;&#45;&#99;&#111;&#x6d;&#112;&#x69;&#108;&#x65;&#114;&#x40;&#50;&#x2e;&#x36;&#x2e;&#49;&#48;">&#118;&#117;&#x65;&#45;&#x74;&#101;&#109;&#x70;&#x6c;&#97;&#116;&#x65;&#45;&#99;&#111;&#x6d;&#112;&#x69;&#108;&#x65;&#114;&#x40;&#50;&#x2e;&#x36;&#x2e;&#49;&#48;</a> 需要升级到2.7.16<br>vite-plugin-vue2 替换为 @vitejs&#x2F;plugin-vue2<br>vite.createFilter is not a function</p>
+<p><a href="mailto:&#x76;&#117;&#101;&#45;&#x74;&#x65;&#x6d;&#x70;&#x6c;&#97;&#x74;&#x65;&#x2d;&#x63;&#x6f;&#109;&#112;&#105;&#108;&#101;&#x72;&#x40;&#x32;&#46;&#x36;&#x2e;&#49;&#x30;">&#x76;&#117;&#101;&#45;&#x74;&#x65;&#x6d;&#x70;&#x6c;&#97;&#x74;&#x65;&#x2d;&#x63;&#x6f;&#109;&#112;&#105;&#108;&#101;&#x72;&#x40;&#x32;&#46;&#x36;&#x2e;&#49;&#x30;</a> 需要升级到2.7.16<br>vite-plugin-vue2 替换为 @vitejs&#x2F;plugin-vue2<br>vite.createFilter is not a function</p>
 <p>需要升级vite到3.x版本，这个错误是vite与插件不兼容,查看@vitejs&#x2F;plugin-vue2源码发现，引入了vite3.0<br>Error in render: “ReferenceError: React is not defined”<br>需要安装@vitejs&#x2F;plugin-vue-jsx<br>使用vue this, vuex等<br>import { getCurrentInstance } from ‘vue’</p>
 <p>&#x2F;&#x2F; 访问vuex<br>export const useStore &#x3D; () &#x3D;&gt; {<br>  const vm &#x3D; getCurrentInstance()<br>  if (!vm) throw new Error(‘must be called in setup’)<br>  console.log(‘vm–’, vm);<br>  return vm.proxy.$store<br>}<br>&#x2F;&#x2F; 访问this<br>export const useCtx &#x3D; () &#x3D;&gt; {<br>  const vm &#x3D; getCurrentInstance()<br>  if (!vm) throw new Error(‘must be called in setup’)<br>  return vm.proxy;<br>}</p>
 <hr>
@@ -264,13 +273,13 @@
         <svg class="icon icon-article" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <path d="M240.51564747 647.74217627h196.07203239c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806V165.10332731c0-33.18142087-30.16492806-60.32985613-60.32985612-60.32985611H245.04038668C225.43318342 104.7734712 210.35071939 119.85593522 210.35071939 139.46313845V617.57724821c0 16.59071043 13.57421762 30.16492806 30.16492808 30.16492806z m663.62841731-452.47392089v482.63884894c0 33.18142087-27.14843525 60.32985613-60.32985612 60.32985613H180.18579134c-33.18142087 0-60.32985613-27.14843525-60.32985612-60.32985613V195.26825538c-49.77213131 0-90.49478418 40.72265287-90.49478417 90.49478417v452.4739209c0 49.77213131 40.72265287 90.49478418 90.49478417 90.49478417h286.56681657c16.59071043 0 30.16492806 13.57421762 30.16492807 30.16492807s13.57421762 30.16492806 30.16492805 30.16492806h90.49478418c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806s13.57421762-30.16492806 30.16492807-30.16492807h286.56681657c49.77213131 0 90.49478418-40.72265287 90.49478417-90.49478417V285.76303955c0-49.77213131-40.72265287-90.49478418-90.49478417-90.49478417zM587.41232014 647.74217627h191.54729318c19.60720323 0 34.68966726-15.08246403 34.68966729-34.68966727V134.93839925c0-16.59071043-13.57421762-30.16492806-30.16492808-30.16492805H617.57724821c-30.16492806 0-60.32985613 27.14843525-60.32985612 60.32985611v452.4739209c0 16.59071043 13.57421762 30.16492806 30.16492805 30.16492806z" fill="currentColor"></path>
 </svg>
-        <span>4</span>
+        <span>6</span>
       </div>
       <div class="count-box--item">
         <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
 </svg>
-        2
+        3
       </div>
       <div class="count-box--item">
         <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -321,6 +330,12 @@
   </div>
   <div class="widget-body">
     <ul class="categorys-list">
+      
+        <li class="categorys-list-item">
+          <a href="/categories/Vs-Code/">
+            Vs Code (1)
+          </a>
+        </li>
       
         <li class="categorys-list-item">
           <a href="/categories/js/">
