@@ -85,6 +85,11 @@
     </div>
   </div>
 </nav>
+<script type="text/javascript">
+  document.addEventListener("focusUser", event => {
+    console.log("nav收到事件",event);
+  })
+</script>
 
   
   
@@ -112,7 +117,7 @@
           
             <h2 class="last-time">
               <span>最后更新于</span>
-              <time  class="article-updated" datetime="2024-03-19T03:33:54.122Z" itemprop="dateUpdated">2024-03-19</time>
+              <time  class="article-updated" datetime="2024-12-31T02:42:17.066Z" itemprop="dateUpdated">2024-12-31</time>
             </h2>
           
           
@@ -135,17 +140,21 @@
 </header>
 <script type="text/javascript">
   var h1 = document.querySelector('.page-title');
-  h1.innerHTML = h1.innerText.replace(/\S/g, "<span>$&</span>");
-  var spanList = [].slice.call(h1.querySelectorAll('span'));
-  console.log('spanList', spanList);
-  spanList.map((span, index) => {
-    span.style.setProperty('--delay', parseInt((index * 0.2 * 100)) / 100 + 's');
-  });
-  var typing = document.querySelector('.typing');
-  const typingHide = document.querySelector('.typing-hide');
-  console.log('w', typingHide.getBoundingClientRect().width);
-  typing.style.setProperty('--typingW', typingHide.getBoundingClientRect().width + 10 + 'px');
-  // typing.style.setProperty('--typingAni', typingHide.getBoundingClientRect().width + 20 + 'px');
+  if (h1) {
+    h1.innerHTML = h1.innerText.replace(/\S/g, "<span>$&</span>");
+    var spanList = [].slice.call(h1.querySelectorAll('span'));
+    spanList.map((span, index) => {
+      span.style.setProperty('--delay', parseInt((index * 0.2 * 100)) / 100 + 's');
+    });
+    h1.addEventListener('click', () => {
+      const focusUser = new Event("focusUser");
+      console.log('click', focusUser);
+      document.dispatchEvent(focusUser);
+    });
+    var typing = document.querySelector('.typing');
+    const typingHide = document.querySelector('.typing-hide');
+    typing.style.setProperty('--typingW', typingHide.getBoundingClientRect().width + 10 + 'px');
+  }
 </script>
 
     <!-- 文章 -->
@@ -202,7 +211,7 @@ Child.prototype.constructor = Child; // 把Child指向自己，不与Parent共�
 var child = new Child(&#39;测试名字&#39;, &#39;测试年龄&#39;, &#39;测试身高&#39;)
 console.log(child) // 发现打印出来的属性都继承了，就是没值
 </code></pre>
-<p>child.ParFunc()：当访问ParFunc属性时，会先在child的实例属性中寻找，找不到就去child的原型对象上去找。一层一层的寻找构成了<strong>原型链</strong><br><img src="/img/image-3.png" alt="Alt text"><br>因为无法向父类构造函数传参;可以 new Parent(‘名字’, ‘年龄’)这时传参<br>注：如果想用原型给Child拓展方法：</p>
+<p>child.ParFunc()：当访问ParFunc属性时，会先在child的实例属性中寻找，找不到就去child的原型对象上去找。一层一层的寻找构成了<strong>原型链</strong><br><img src="/img/tidy/image-3.png" alt="Alt text"><br>因为无法向父类构造函数传参;可以 new Parent(‘名字’, ‘年龄’)这时传参<br>注：如果想用原型给Child拓展方法：</p>
 <pre><code>Child.prototype.childHeight = function () &#123;
       console.log(this.height)
     &#125;
@@ -282,7 +291,7 @@ console.log(div1.dataset) // DOMStringMap &#123;a: &quot;测试&quot;, b: &quot;
 </code></pre>
 <p>用data-*作为自定义属性：可以一句话就获取到所有属性，获取方式也简便   </p>
 <h2 id="三：事件的几个阶段：捕获、目标-event-target，即触发过程-、冒泡"><a href="#三：事件的几个阶段：捕获、目标-event-target，即触发过程-、冒泡" class="headerlink" title="三：事件的几个阶段：捕获、目标(event.target，即触发过程)、冒泡"></a>三：事件的几个阶段：捕获、目标(event.target，即触发过程)、冒泡</h2><p>先盗个图</p>
-<p><img src="/img/image-2.png" alt="Alt text"><br>——冒泡(IE事件流)：从最深的节点向外传播，div -&gt; window,就好比往水里丢一个石子，一层层波浪抵达河边缘</p>
+<p><img src="/img/tidy/image-2.png" alt="Alt text"><br>——冒泡(IE事件流)：从最深的节点向外传播，div -&gt; window,就好比往水里丢一个石子，一层层波浪抵达河边缘</p>
 <p>——捕获(网景)：从最外层向目标传递，window -&gt; div,就好比你去一个大企业集团找人，需要提供公司 &gt; 大部门 &gt; 小部门 &gt; 小组 &gt; 目标</p>
 <p>——目标：即触发过程event.target</p>
 <p>——target、currentTarget的区别：target这个属性指向的是目标过程中的DOM对象，也就是 <em><strong>触发事件监听的对象</strong></em>, currentTarget这个指向的是当前的对象，具体内容跟this一样，当this指向的是目标的时候(事件的目标阶段)，target与currentTarget相同</p>
@@ -339,10 +348,10 @@ Object.prototype.toString.call(new Date()) ; // [object Date]
 </code></pre>
 <p><strong>R:严格模式下，除构造函数、对象内置函数外，this均指向 undefined</strong></p>
 <p><strong>Q:script标签的 async、defer啥区别？</strong><br><strong>R:别说那没用的，上图</strong></p>
-<p><img src="/img/image-1.png" alt="Alt text"><br>啥也不加：script读取和解析脚本阶段都会阻断页面执行，<br>加async  : script解析脚本阶段会阻断页面执行<br>加defer   : scriptj脚本将在页面完成解析时执行</p>
+<p><img src="/img/tidy/image-1.png" alt="Alt text"><br>啥也不加：script读取和解析脚本阶段都会阻断页面执行，<br>加async  : script解析脚本阶段会阻断页面执行<br>加defer   : scriptj脚本将在页面完成解析时执行</p>
 <p>Q:[1,2,3].map(parseInt)的结果？<br>R:之前用到parseInt，只知道是向下取整，翻了下w3c的parseInt定义: Crazy</p>
-<p><img src="/img/image-4.png" alt="Alt text"><br>再看map，</p>
-<p><img src="/img/image-5.png" alt="Alt text"><br>parseInt就是回调函数,map会传给parseInt三个参数，parseInt只识别前两个，<br>那也就是得到了 </p>
+<p><img src="/img/tidy/image-4.png" alt="Alt text"><br>再看map，</p>
+<p><img src="/img/tidy/image-5.png" alt="Alt text"><br>parseInt就是回调函数,map会传给parseInt三个参数，parseInt只识别前两个，<br>那也就是得到了 </p>
 <pre><code>function parseInt1 (item, index) &#123;
   return parseInt(item,index)
 &#125;
@@ -422,13 +431,13 @@ parseInt(10,2) =&gt; 3，parseInt(20, 2) =&gt; 6,parseInt(30, 2) =&gt; NaN
         <svg class="icon icon-article" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <path d="M240.51564747 647.74217627h196.07203239c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806V165.10332731c0-33.18142087-30.16492806-60.32985613-60.32985612-60.32985611H245.04038668C225.43318342 104.7734712 210.35071939 119.85593522 210.35071939 139.46313845V617.57724821c0 16.59071043 13.57421762 30.16492806 30.16492808 30.16492806z m663.62841731-452.47392089v482.63884894c0 33.18142087-27.14843525 60.32985613-60.32985612 60.32985613H180.18579134c-33.18142087 0-60.32985613-27.14843525-60.32985612-60.32985613V195.26825538c-49.77213131 0-90.49478418 40.72265287-90.49478417 90.49478417v452.4739209c0 49.77213131 40.72265287 90.49478418 90.49478417 90.49478417h286.56681657c16.59071043 0 30.16492806 13.57421762 30.16492807 30.16492807s13.57421762 30.16492806 30.16492805 30.16492806h90.49478418c16.59071043 0 30.16492806-13.57421762 30.16492805-30.16492806s13.57421762-30.16492806 30.16492807-30.16492807h286.56681657c49.77213131 0 90.49478418-40.72265287 90.49478417-90.49478417V285.76303955c0-49.77213131-40.72265287-90.49478418-90.49478417-90.49478417zM587.41232014 647.74217627h191.54729318c19.60720323 0 34.68966726-15.08246403 34.68966729-34.68966727V134.93839925c0-16.59071043-13.57421762-30.16492806-30.16492808-30.16492805H617.57724821c-30.16492806 0-60.32985613 27.14843525-60.32985612 60.32985611v452.4739209c0 16.59071043 13.57421762 30.16492806 30.16492805 30.16492806z" fill="currentColor"></path>
 </svg>
-        <span>4</span>
+        <span>7</span>
       </div>
       <div class="count-box--item">
         <svg class="icon icon-categories" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <path d="M900.3614811 257.09082106h-339.81629553l-67.96326003-101.9448889c-19.41807444-29.12711113-48.54518557-43.69066667-82.52681443-43.69066667H123.6385189c-53.39970333 0-97.09036999 43.69066667-97.09037113 97.09036999v582.54222222c0 53.39970333 43.69066667 97.09036999 97.09037113 97.09037002h776.7229622c53.39970333 0 97.09036999-43.69066667 97.09037113-97.09037002V354.18119104c0-53.39970333-43.69066667-97.09036999-97.09037113-97.09036998z m-97.09036999 242.72592554H220.72888889c-24.27259221 0-48.54518557-24.27259221-48.54518556-48.54518556s24.27259221-48.54518557 48.54518556-48.54518444h582.54222222c24.27259221 0 48.54518557 24.27259221 48.54518556 48.54518444s-24.27259221 48.54518557-48.54518556 48.54518556z" fill="currentColor"></path>
 </svg>
-        2
+        3
       </div>
       <div class="count-box--item">
         <svg class="icon icon-tags" viewBox="0 0 1098 1024" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -493,6 +502,12 @@ parseInt(10,2) =&gt; 3，parseInt(20, 2) =&gt; 6,parseInt(30, 2) =&gt; NaN
     <ul class="categorys-list">
       
         <li class="categorys-list-item">
+          <a href="/categories/Vs-Code/">
+            Vs Code (2)
+          </a>
+        </li>
+      
+        <li class="categorys-list-item">
           <a href="/categories/js/">
             js (1)
           </a>
@@ -547,7 +562,7 @@ parseInt(10,2) =&gt; 3，parseInt(20, 2) =&gt; 6,parseInt(30, 2) =&gt; NaN
       
     </div>
      
-    <p>&copy; 2024 <a href="/" target="_blank">lantianhaijiao</a></p>
+    <p>&copy; 2025 <a href="/" target="_blank">lantianhaijiao</a></p>
 
     
 

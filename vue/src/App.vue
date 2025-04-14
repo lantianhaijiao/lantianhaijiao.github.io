@@ -2,7 +2,7 @@
  * @Author: haobin.wang
  * @Date: 2024-02-05 18:15:03
  * @LastEditors: haobin.wang
- * @LastEditTime: 2024-03-19 14:49:27
+ * @LastEditTime: 2025-01-01 08:42:12
  * @Description: Do not edit
 -->
 <script setup lang="ts">
@@ -15,7 +15,7 @@ import HelloWorld from './components/HelloWorld.vue'
     <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
     <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <HelloWorld msg="2025" />
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
