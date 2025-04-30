@@ -2,7 +2,7 @@
  * @Author: haobin.wang
  * @Date: 2024-02-05 18:15:03
  * @LastEditors: haobin.wang
- * @LastEditTime: 2024-03-19 15:06:41
+ * @LastEditTime: 2025-04-25 14:50:54
  * @Description: Do not edit
  */
 /* eslint-env node */
@@ -18,5 +18,5 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest'
   },
-  ignorePatterns: ['scripts/*.mjs']
+  ignorePatterns: ['scripts/*.mjs', 'node_modules/**']
 }

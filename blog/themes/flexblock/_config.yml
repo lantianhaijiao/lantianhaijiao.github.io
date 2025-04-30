@@ -2,8 +2,9 @@
 menu:
   首页: /
   思否: https://segmentfault.com/u/lantianhaijiao
-  关于: /about
-  文档: /docs
+  关于: https://github.com/lantianhaijiao
+  文档: /press
+  逛:  /about
 
 # 主页banner图
 banner: /img/banner.jpg

@@ -2,11 +2,11 @@
  * @Author: haobin.wang
  * @Date: 2024-02-05 18:15:03
  * @LastEditors: haobin.wang
- * @LastEditTime: 2024-02-06 18:33:15
+ * @LastEditTime: 2025-04-14 09:48:05
  * @Description: Do not edit
  */
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomeView from '../pages/HomeView.vue'
 // console.log('import.meta.env.BASE_URL', import.meta.env.BASE_URL);
 
 const router = createRouter({
@@ -20,10 +20,7 @@ const router = createRouter({
     {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
+      component: () => import('../pages/AboutView.vue')
     }
   ]
 })
