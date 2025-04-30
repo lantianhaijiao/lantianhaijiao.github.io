@@ -379,14 +379,14 @@
         </li>
       
         <li class="categorys-list-item">
-          <a href="/categories/%E8%84%9A%E6%89%8B%E6%9E%B6/">
-            脚手架 (1)
+          <a href="/categories/js/">
+            js (1)
           </a>
         </li>
       
         <li class="categorys-list-item">
-          <a href="/categories/js/">
-            js (1)
+          <a href="/categories/%E8%84%9A%E6%89%8B%E6%9E%B6/">
+            脚手架 (1)
           </a>
         </li>
       
@@ -491,6 +491,38 @@
 
 
   
-  <!-- 尾部用户自定义相关内容 -->
+  <!--
+ * @Author: haobin.wang
+ * @Date: 2025-04-14 09:41:22
+ * @LastEditors: haobin.wang
+ * @LastEditTime: 2025-04-30 18:00:41
+ * @Description: Do not edit
+-->
+<!-- 尾部用户自定义相关内容 -->
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script>
+  // 先获取主题配置中的相关参数
+  const clientID = 'Ov23liNbNIjaRLv7gnl5';
+  const clientSecret = '3d1fdd22d2df2eb748b73ecad9439905d2442b02';
+  const repo = 'lantianhaijiao.github.io';
+  const owner = 'lantianhaijiao';
+  const admin = ['lantianhaijiao'];
+  const distractionFreeMode = 'false';
+  const id = '2024/12/31/pag/';
+
+  // 再创建 Gitalk 实例
+  var giTalk = new Gitalk({
+    clientID: clientID,
+    clientSecret: clientSecret,
+    repo: repo,
+    owner: owner,
+    admin: admin,
+    id: id,
+    distractionFreeMode: distractionFreeMode
+  });
+  giTalk.render('gitalk-container');
+</script>
 </body>
 </html>
