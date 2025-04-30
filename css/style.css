@@ -814,6 +814,11 @@ html.show-mobile-nav .navbar-list {
     padding: 8px;
   }
 }
+#gitalk-container {
+  padding: 1px 30px 60px;
+  box-sizing: border-box;
+  background-color: var(--theme-bg-primary);
+}
 .card-container {
   position: relative;
   height: 100%;
