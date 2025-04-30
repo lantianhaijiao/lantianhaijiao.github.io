@@ -77,9 +77,11 @@
         
           <li class="navbar-list-item"><a target="_blank" rel="noopener" href="https://segmentfault.com/u/lantianhaijiao">思否</a></li>
         
-          <li class="navbar-list-item"><a href="/about">关于</a></li>
+          <li class="navbar-list-item"><a target="_blank" rel="noopener" href="https://github.com/lantianhaijiao">关于</a></li>
         
-          <li class="navbar-list-item"><a href="/docs">文档</a></li>
+          <li class="navbar-list-item"><a href="/press">文档</a></li>
+        
+          <li class="navbar-list-item"><a href="/about">逛</a></li>
         
       </ul>
     </div>
@@ -117,7 +119,7 @@
           
             <h2 class="last-time">
               <span>最后更新于</span>
-              <time  class="article-updated" datetime="2024-12-31T01:50:14.866Z" itemprop="dateUpdated">2024-12-31</time>
+              <time  class="article-updated" datetime="2025-04-14T01:41:21.713Z" itemprop="dateUpdated">2025-04-14</time>
             </h2>
           
           
@@ -171,7 +173,7 @@
         <h1 id="vue升级2-7-关联vite升级"><a href="#vue升级2-7-关联vite升级" class="headerlink" title="vue升级2.7,关联vite升级"></a>vue升级2.7,关联vite升级</h1><blockquote>
 <p><a target="_blank" rel="noopener" href="https://v2.cn.vuejs.org/v2/guide/migration-vue-2-7.html">https://v2.cn.vuejs.org/v2/guide/migration-vue-2-7.html</a></p>
 </blockquote>
-<p><a href="mailto:&#x76;&#x75;&#101;&#x2d;&#116;&#x65;&#109;&#x70;&#x6c;&#x61;&#x74;&#x65;&#x2d;&#99;&#111;&#x6d;&#112;&#x69;&#108;&#x65;&#114;&#x40;&#x32;&#x2e;&#x36;&#x2e;&#x31;&#x30;">&#x76;&#x75;&#101;&#x2d;&#116;&#x65;&#109;&#x70;&#x6c;&#x61;&#x74;&#x65;&#x2d;&#99;&#111;&#x6d;&#112;&#x69;&#108;&#x65;&#114;&#x40;&#x32;&#x2e;&#x36;&#x2e;&#x31;&#x30;</a> 需要升级到2.7.16<br>vite-plugin-vue2 替换为 @vitejs&#x2F;plugin-vue2<br>vite.createFilter is not a function</p>
+<p><a href="mailto:&#x76;&#117;&#101;&#x2d;&#116;&#101;&#109;&#112;&#108;&#x61;&#116;&#x65;&#45;&#99;&#x6f;&#x6d;&#x70;&#x69;&#108;&#x65;&#114;&#x40;&#x32;&#x2e;&#54;&#46;&#x31;&#48;">&#x76;&#117;&#101;&#x2d;&#116;&#101;&#109;&#112;&#108;&#x61;&#116;&#x65;&#45;&#99;&#x6f;&#x6d;&#x70;&#x69;&#108;&#x65;&#114;&#x40;&#x32;&#x2e;&#54;&#46;&#x31;&#48;</a> 需要升级到2.7.16<br>vite-plugin-vue2 替换为 @vitejs&#x2F;plugin-vue2<br>vite.createFilter is not a function</p>
 <p>需要升级vite到3.x版本，这个错误是vite与插件不兼容,查看@vitejs&#x2F;plugin-vue2源码发现，引入了vite3.0<br>Error in render: “ReferenceError: React is not defined”<br>需要安装@vitejs&#x2F;plugin-vue-jsx<br>使用vue this, vuex等<br>import { getCurrentInstance } from ‘vue’</p>
 <p>&#x2F;&#x2F; 访问vuex<br>export const useStore &#x3D; () &#x3D;&gt; {<br>  const vm &#x3D; getCurrentInstance()<br>  if (!vm) throw new Error(‘must be called in setup’)<br>  console.log(‘vm–’, vm);<br>  return vm.proxy.$store<br>}<br>&#x2F;&#x2F; 访问this<br>export const useCtx &#x3D; () &#x3D;&gt; {<br>  const vm &#x3D; getCurrentInstance()<br>  if (!vm) throw new Error(‘must be called in setup’)<br>  return vm.proxy;<br>}</p>
 <hr>
@@ -338,14 +340,14 @@
         </li>
       
         <li class="categorys-list-item">
-          <a href="/categories/js/">
-            js (1)
+          <a href="/categories/%E8%84%9A%E6%89%8B%E6%9E%B6/">
+            脚手架 (1)
           </a>
         </li>
       
         <li class="categorys-list-item">
-          <a href="/categories/%E8%84%9A%E6%89%8B%E6%9E%B6/">
-            脚手架 (1)
+          <a href="/categories/js/">
+            js (1)
           </a>
         </li>
       
