@@ -119,7 +119,7 @@
           
             <h2 class="last-time">
               <span>最后更新于</span>
-              <time  class="article-updated" datetime="2025-04-14T01:41:21.713Z" itemprop="dateUpdated">2025-04-14</time>
+              <time  class="article-updated" datetime="2025-05-07T01:41:40.160Z" itemprop="dateUpdated">2025-05-07</time>
             </h2>
           
           
@@ -184,8 +184,10 @@
 </ul>
 <h2 id="方案拟定"><a href="#方案拟定" class="headerlink" title="方案拟定"></a>方案拟定</h2><ul>
 <li>无论打开哪个文件结尾，都有个问题，可能误判，因为这几个文件在其他业务中也有存在，所以更好的方案是右键文件夹，让用户手动指定来预览</li>
-<li>在package.json中指定：右键文件夹的时候开启指令，显示【播放spine】<br><img src="/img/spine/image-1.png" alt="alt text"><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&quot;explorer/context&quot;: [</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;command&quot;: &quot;spine.preview&quot;,</span><br><span class="line">    &quot;group&quot;: &quot;navigation&quot;,</span><br><span class="line">    &quot;when&quot;: &quot;explorerResourceIsFolder&quot;</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure></li>
+<li>在package.json中指定：右键文件夹的时候开启指令，显示【播放spine】<br><img src="/img/spine/image-1.png" alt="alt text"></li>
 </ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&quot;explorer/context&quot;: [</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;command&quot;: &quot;spine.preview&quot;,</span><br><span class="line">    &quot;group&quot;: &quot;navigation&quot;,</span><br><span class="line">    &quot;when&quot;: &quot;explorerResourceIsFolder&quot;</span><br><span class="line">  &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
 <h2 id="拓展-webview方式实现"><a href="#拓展-webview方式实现" class="headerlink" title="拓展+webview方式实现"></a>拓展+webview方式实现</h2><table>
 <thead>
 <tr>
@@ -503,11 +505,11 @@
  * @Author: haobin.wang
  * @Date: 2025-04-14 09:41:22
  * @LastEditors: haobin.wang
- * @LastEditTime: 2025-04-30 18:00:41
+ * @LastEditTime: 2025-05-07 11:07:03
  * @Description: Do not edit
 -->
 <!-- 尾部用户自定义相关内容 -->
-<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<link rel="stylesheet" href="/css/other/gitalk.css">
 <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 <div id="gitalk-container"></div>
 <script>

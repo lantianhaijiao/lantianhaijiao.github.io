@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Diff</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        -webkit-overflow-scrolling: touch;
+      }
+      input,
+      textarea,
+      select,
+      button {
+        font-size: 14px;
+      }
+      input,
+      textarea {
+        border: none;
+        outline: none;
+      }
+
+      body {
+        padding: 20px;
+        box-sizing: border-box;
+        background-color: #2e3b4e; /* 深色背景 */
+        color: #dcdcdc; /* 浅色字体 */
+        font-family: Arial, sans-serif;
+      }
+
+      h1 {
+        color: #ffffff; /* 标题白色 */
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+      .container {
+        display: flex;
+        box-sizing: border-box;
+        margin-top: 20px;
+        gap: 10px; /* 两侧输入框间距 */
+      }
+
+      .editable-container {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+      }
+
+      .editable {
+        width: 100%;
+        height: 200px;
+        border: 1px solid #4a5a71; /* 深灰边框 */
+        border-radius: 5px; /* 圆角 */
+        padding: 10px;
+        font-family: monospace;
+        background: #3c4a61; /* 深蓝背景 */
+        color: #e0e0e0; /* 字体浅灰色 */
+        overflow-y: auto;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        outline: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 微小阴影 */
+        box-sizing: border-box;
+      }
+
+      .editable:focus {
+        border: 1px solid #5c9ded; /* 焦点时边框浅蓝色 */
+        background: #3a455b; /* 焦点时背景更亮 */
+      }
+
+      .added {
+        background-color: #4caf50; /* 新增内容绿色背景（深绿色） */
+        color: #ffffff; /* 新增内容字体白色 */
+      }
+
+      .removed {
+        background-color: #e57373; /* 删除内容红色背景（深红色） */
+        color: #ffffff; /* 删除内容字体白色 */
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>文本比对</h1>
+    <div class="container">
+      <div class="editable-container">
+        <strong>L</strong>
+        <div id="leftInput" class="editable" contenteditable="true"></div>
+      </div>
+      <div class="editable-container">
+        <strong>R</strong>
+        <div id="rightInput" class="editable" contenteditable="true"></div>
+      </div>
+    </div>
+    <script src="../js/fast-diff.js"></script>
+    <script>
+      const leftInput = document.getElementById("leftInput");
+      const rightInput = document.getElementById("rightInput");
+      let isComposing = false; // 标记是否处于输入法输入状态
+
+      /**
+       * 文本比对核心函数
+       * @param {string} oldText 原文本
+       * @param {string} newText 新文本
+       * @returns {Object} 包含左右侧比对结果
+       */
+      function diffWords(oldText, newText) {
+        const changes = fastDiff(oldText, newText);
+        const markedLeft = [];
+        const markedRight = [];
+
+        changes.forEach(([type, value]) => {
+          if (type === -1) {
+            // 删除的内容
+            markedLeft.push(`<span class="removed">${value}</span>`);
+          } else if (type === 1) {
+            // 新增的内容
+            markedRight.push(`<span class="added">${value}</span>`);
+          } else {
+            // 未修改部分
+            markedLeft.push(value);
+            markedRight.push(value);
+          }
+        });
+
+        return {
+          left: markedLeft.join(""),
+          right: markedRight.join(""),
+        };
+      }
+
+      /**
+       * 更新比对结果
+       * @param {HTMLElement} activeInput 当前触发的输入框
+       */
+      function updateDiff(activeInput) {
+        if (isComposing) return; // 如果处于输入法状态，不更新
+
+        const oldText = leftInput.innerText.trim();
+        const newText = rightInput.innerText.trim();
+
+        // 进行文本比对
+        const { left, right } = diffWords(oldText, newText);
+
+        // 根据输入框更新内容并保持光标
+        if (activeInput === leftInput) {
+          replaceContent(leftInput, left);
+          replaceContent(rightInput, right, false); // 右侧不恢复光标
+        } else if (activeInput === rightInput) {
+          replaceContent(rightInput, right);
+          replaceContent(leftInput, left, false); // 左侧不恢复光标
+        }
+      }
+
+      /**
+       * 替换 contenteditable 内容
+       * @param {HTMLElement} element 目标元素
+       * @param {string} html HTML 内容
+       * @param {boolean} restoreCaret 是否恢复光标位置
+       */
+      function replaceContent(element, html, restoreCaret = true) {
+        const selection = window.getSelection();
+        const range = selection.rangeCount > 0 ? selection.getRangeAt(0) : null;
+
+        // 获取当前光标偏移量
+        const preCaretOffset = restoreCaret
+          ? getCaretCharacterOffsetWithin(element)
+          : null;
+
+        // 如果内容没有变化，直接返回
+        if (element.innerHTML === html) return;
+
+        // 替换 HTML 内容
+        element.innerHTML = html;
+
+        // 恢复光标位置
+        if (restoreCaret && preCaretOffset !== null) {
+          restoreCaretCharacterOffsetWithin(element, preCaretOffset);
+        }
+      }
+
+      /**
+       * 获取光标相对于 contenteditable 的字符偏移量
+       * @param {HTMLElement} element
+       * @returns {number}
+       */
+      function getCaretCharacterOffsetWithin(element) {
+        const selection = window.getSelection();
+        let offset = 0;
+        if (selection.rangeCount > 0) {
+          const range = selection.getRangeAt(0);
+          const preCaretRange = range.cloneRange();
+          preCaretRange.selectNodeContents(element);
+          preCaretRange.setEnd(range.endContainer, range.endOffset);
+          offset = preCaretRange.toString().length;
+        }
+        return offset;
+      }
+
+      /**
+       * 恢复光标到指定字符偏移量
+       * @param {HTMLElement} element
+       * @param {number} offset
+       */
+      function restoreCaretCharacterOffsetWithin(element, offset) {
+        const selection = window.getSelection();
+        let currentOffset = 0;
+
+        function traverseNodes(node) {
+          if (node.nodeType === Node.TEXT_NODE) {
+            const nodeLength = node.textContent.length;
+            if (currentOffset + nodeLength >= offset) {
+              const range = document.createRange();
+              range.setStart(node, offset - currentOffset);
+              range.collapse(true);
+              selection.removeAllRanges();
+              selection.addRange(range);
+              return true;
+            }
+            currentOffset += nodeLength;
+          } else {
+            for (let i = 0; i < node.childNodes.length; i++) {
+              if (traverseNodes(node.childNodes[i])) return true;
+            }
+          }
+          return false;
+        }
+
+        traverseNodes(element);
+      }
+
+      // 监听输入事件
+      leftInput.addEventListener("input", () => updateDiff(leftInput));
+      rightInput.addEventListener("input", () => updateDiff(rightInput));
+
+      // 监听输入法事件
+      leftInput.addEventListener(
+        "compositionstart",
+        () => (isComposing = true)
+      );
+      leftInput.addEventListener("compositionend", () => {
+        isComposing = false;
+        updateDiff(leftInput);
+      });
+      rightInput.addEventListener(
+        "compositionstart",
+        () => (isComposing = true)
+      );
+      rightInput.addEventListener("compositionend", () => {
+        isComposing = false;
+        updateDiff(rightInput);
+      });
+    </script>
+  </body>
+</html>
