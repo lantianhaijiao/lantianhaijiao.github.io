@@ -1,0 +1,1 @@
+import{_ as t,c as a,o as r,ae as l}from"./chunks/framework.CPIiAToz.js";const f=JSON.parse('{"title":"Demo","description":"","frontmatter":{"outline":"deep"},"headers":[],"relativePath":"demo.md","filePath":"demo.md"}'),s={name:"demo.md"};function h(o,e,m,p,n,_){return r(),a("div",null,e[0]||(e[0]=[l("",15)]))}const i=t(s,[["render",h]]);export{f as __pageData,i as default};
